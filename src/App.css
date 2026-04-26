@@ -43,76 +43,72 @@
     --font-Sekuya: "Sekuya", sans-serif;
 }
 
-/* From Uiverse.io by Creatlydev */ 
-.button {
-  cursor: pointer;
-  border: none;
-  background: #7808d0;
-  color: #fff;
-  width: 100px;
-  height: 100px;
-  border-radius: 50%;
-  overflow: hidden;
-  position: relative;
-  display: grid;
-  place-content: center;
-  transition:
-    background 300ms,
-    transform 200ms;
-  font-weight: 600;
-}
-
-.button__text {
-  position: absolute;
-  inset: 0;
-  animation: text-rotation 8s linear infinite;
-
-  > span {
-    position: absolute;
-    transform: rotate(calc(19deg * var(--index)));
-    inset: 7px;
+@layer components {
+  .darkMode {
+    /* background: linear-gradient(135deg, #0b0f1a, #111827); */
+    background-image: radial-gradient(circle at 50% 150%, transparent, #111827, #0b0f1a);
+    /* background-image: radial-gradient(circle at 50% 140%, transparent, #fde68a, #fef9c3); */
   }
+
+  .glass {
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    background: rgba(255, 255, 255, 0.08);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+  }
+
 }
 
-.button__circle {
-  position: relative;
-  width: 40px;
-  height: 40px;
+/* From Uiverse.io by adamgiebl */ 
+.contact-us-btn {
+  background: #a370f0;
+  color: white;
+  padding: 0.35em;
+  padding-left: 1.2em;
+  border-radius: 40px;
+  border: none;
+  letter-spacing: 0.05em;
+  display: flex;
+  align-items: center;
+  box-shadow: inset 0 0 1.6em -0.6em #714da6;
   overflow: hidden;
-  background: #fff;
-  color: #7808d0;
-  border-radius: 50%;
+  position: relative;
+  height: 80px;
+  padding-right: 3.3em;
+  cursor: pointer;
+}
+
+.contact-us-btn .icon {
+  background: white;
+  margin-left: 1em;
+  position: absolute;
   display: flex;
   align-items: center;
   justify-content: center;
+  height: 30px;
+  width: 30px;
+  border-radius: 50%;
+  box-shadow: 0.1em 0.1em 0.6em 0.2em #7b52b9;
+  right: 0.3em;
+  transition: all 0.3s;
 }
 
-.button__icon--copy {
-  position: absolute;
-  transform: translate(-150%, 150%);
+.contact-us-btn:hover .icon {
+  width: calc(100% - 0.6em);
+  height: calc(100% - 0.6em);
+  border-radius: 40px;
 }
 
-.button:hover {
-  background: #000;
-  transform: scale(1.05);
+.contact-us-btn .icon svg {
+  width: 1.1em;
+  transition: transform 0.3s;
+  color: #7b52b9;
 }
 
-.button:hover .button__icon {
-  color: #000;
+.contact-us-btn:hover .icon svg {
+  transform: translateX(0.1em);
 }
 
-.button:hover .button__icon:first-child {
-  transition: transform 0.3s ease-in-out;
-  transform: translate(150%, -150%);
-}
-
-.button:hover .button__icon--copy {
-  transition: transform 0.3s ease-in-out 0.1s;
-  transform: translate(0);
-}
-
-@keyframes text-rotation {
-  to {
-    rotate: 360deg;
-  }
+.contact-us-btn:active .icon {
+  transform: scale(0.95);
 }
