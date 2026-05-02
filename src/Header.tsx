@@ -9,7 +9,7 @@ const Header: React.FC = () => {
             </div>
             <div className="flex-1 relative flex items-center">
                 {/* Form stay here */}
-                <div className="absolute -translate-x-1/2  w-xl">
+                <div className="absolute -translate-x-1/2  w-125">
                     <HeaderForm/>
                 </div>
 

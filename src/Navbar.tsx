@@ -69,6 +69,7 @@ const NavBar: React.FC = () => {
     };
     }, [resetActiveIndicator])
 
+    // Progress bar or border incoming
     return (
         <nav className="w-[70%] h-27.5 flex  absolute bottom-[5%] left-1/2 -translate-x-1/2 -translate-y-1/2 items-center justify-around">
             <div className="flex-initial mr-5">
