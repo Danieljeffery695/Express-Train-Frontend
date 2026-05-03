@@ -45,6 +45,9 @@
     --font-Sekuya: "Sekuya", sans-serif;
     --color-darkMode-primary: #0b0f1a;
     --color-darkMode-secondary: #111827;
+    --color-darkMode-third: #e5e7eb;
+    --color-darkMode-border-color: #1a2d47;
+    --color-darkMode-border-color1: #2a4a70
 }
 
 @layer components {
@@ -59,6 +62,16 @@
     -webkit-backdrop-filter: blur(12px);
     background: rgba(255, 255, 255, 0.08);
     border: 1px solid rgba(255, 255, 255, 0.2);
+  }
+
+  .darkMode-form-btn-color {
+    background: linear-gradient(135deg, #111827 0%, #e5e7eb 100%); 
+  };
+
+  .darkMode-form-btn-color1 {
+    color: white !important;
+    background: linear-gradient(135deg, #111827 100%, #e5e7eb 0%); 
+    border: 2px solid #e5e7eb;
   }
 
 }
@@ -125,11 +138,10 @@
 .form-container {
   width: 100%;
   max-width: 600px;
-  background: linear-gradient(145deg, #0f0f0f 0%, #080808 50%, #0a0a0a 100%);
+  background: linear-gradient(145deg, #0f0f0f 0%, #111827 50%, #0b0f1a 100%);
   color: #ffffff;
-  border: 1px solid rgba(212, 168, 75, 0.15);
+  border-radius: 15px;
   overflow: hidden;
-  box-shadow: 0 30px 80px -20px rgba(0, 0, 0, 0.8);
   position: relative;
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
   box-sizing: border-box;
@@ -142,9 +154,9 @@
   background: linear-gradient(
     90deg,
     transparent 0%,
-    #b8922f 20%,
-    #d4a84b 50%,
-    #b8922f 80%,
+    #111827 20%,
+    #111827 50%,
+    #e5e7eb 80%,
     transparent 100%
   );
 }
@@ -160,13 +172,13 @@
   margin-bottom: 22px;
   padding-bottom: 10px;
   border-bottom: 2px solid transparent;
-  border-image: linear-gradient(90deg, #d4a84b, transparent) 1;
+  border-image: linear-gradient(90deg, #e5e7eb, transparent) 1;
 }
 
 .title-icon {
   width: 26px;
   height: 26px;
-  color: #d4a84b;
+  color: #111827;
 }
 
 .title {
@@ -211,7 +223,7 @@
   left: 0;
   width: 3px;
   height: 0;
-  background: linear-gradient(180deg, #d4a84b, #00d4ff);
+  background: linear-gradient(180deg, #0b0f1a, #e5e7eb);
   transition: height 0.3s ease;
 }
 
@@ -220,7 +232,7 @@
 }
 
 .input-group:focus-within {
-  border-color: #d4a84b;
+  border-color: #111827;
   transform: translateX(3px);
 }
 
@@ -242,23 +254,23 @@
   justify-content: center;
   flex-shrink: 0;
   transition: all 0.3s ease;
-  box-sizing: border-box;
+  /* box-sizing: border-box; */
 }
 
 .input-group:focus-within .input-icon {
-  background: #0a0a0a;
-  border-color: #d4a84b;
+  background: #0b0f1a;
+  border-color: #e5e7eb;
 }
 
 .input-icon svg {
   width: 16px;
   height: 16px;
-  color: #00d4ff;
+  color: #111827;
   transition: all 0.3s ease;
 }
 
 .input-group:focus-within .input-icon svg {
-  color: #d4a84b;
+  color: #e5e7eb;
 }
 
 .input-content {
@@ -268,8 +280,8 @@
 
 .input-group label {
   display: block;
-  color: #6b7280;
-  font-size: 0.55rem;
+  color: #e5e7eb;
+  font-size: 0.75rem;
   font-weight: 600;
   letter-spacing: 1.5px;
   text-transform: uppercase;
@@ -278,7 +290,7 @@
 }
 
 .input-group:focus-within label {
-  color: #d4a84b;
+  color: #e5e7eb;
 }
 
 .input-group input {
@@ -287,32 +299,18 @@
   outline: none;
   background: transparent;
   color: #ffffff;
-  font-size: 0.85rem;
+  font-size: 0.90rem;
   font-weight: 500;
+  font-family: 'PlayfairDisplay', sans-serif;
   padding: 0;
   box-sizing: border-box;
 }
 
 .input-group input::placeholder {
   color: #3a4a5a;
+  font-family: 'Roboto', sans-serif;
 }
 
-.forgot {
-  display: flex;
-  justify-content: flex-end;
-  margin-top: 6px;
-}
-
-.forgot a {
-  color: #6b7280;
-  text-decoration: none;
-  font-size: 0.65rem;
-  transition: color 0.3s ease;
-}
-
-.forgot a:hover {
-  color: #d4a84b;
-}
 
 .sign {
   display: flex;
@@ -320,23 +318,26 @@
   justify-content: center;
   gap: 8px;
   width: 100%;
-  background: linear-gradient(135deg, #d4a84b 0%, #b8922f 100%);
+  background: linear-gradient(135deg, #111827 0%, #e5e7eb 100%);
   padding: 10px;
   color: #000;
   border: none;
-  font-weight: 700;
-  font-size: 0.7rem;
+  font-weight: 300;
+  font-size: 0.8rem;
   letter-spacing: 2px;
   text-transform: uppercase;
   cursor: pointer;
   transition: all 0.3s ease;
   margin-top: 6px;
   box-sizing: border-box;
+  font-family: 'Sekuya', sans-serif;
+  border-radius: 12px;
+
 }
 
 .sign:hover {
   transform: translateY(-2px);
-  box-shadow: 0 10px 30px rgba(212, 168, 75, 0.4);
+  box-shadow: 5px 8px 10px rgba(0, 255, 255, 0.2);
 }
 
 .sign-arrow {
@@ -345,13 +346,6 @@
 
 .sign:hover .sign-arrow {
   transform: translateX(4px);
-}
-
-.social-message {
-  display: flex;
-  align-items: center;
-  padding-top: 18px;
-  margin-bottom: 12px;
 }
 
 .line {
@@ -365,80 +359,9 @@
   );
 }
 
-.social-message .message {
-  padding: 0 12px;
-  font-size: 0.55rem;
-  color: #6b7280;
-  text-transform: uppercase;
-  letter-spacing: 1.5px;
-}
 
-.social-icons {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 8px;
-}
 
-.social-icons .icon {
-  height: 54px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  gap: 6px;
-  background: linear-gradient(
-    135deg,
-    rgba(10, 22, 40, 0.8) 0%,
-    rgba(7, 18, 34, 0.9) 100%
-  );
-  border: 1px solid #1a2d47;
-  cursor: pointer;
-  transition: all 0.3s ease;
-  box-sizing: border-box;
-}
 
-.social-icons .icon:hover {
-  transform: translateY(-3px);
-  border-color: #d4a84b;
-}
 
-.social-icons .icon svg {
-  height: 18px;
-  width: 18px;
-  fill: #ffffff;
-  transition: all 0.3s ease;
-}
-
-.social-icons .icon:hover svg {
-  fill: #d4a84b;
-}
-
-.social-icons .icon span {
-  font-size: 0.5rem;
-  color: #6b7280;
-  text-transform: uppercase;
-  letter-spacing: 1px;
-}
-
-.social-icons .icon:hover span {
-  color: #d4a84b;
-}
-
-.signup {
-  text-align: center;
-  font-size: 0.7rem;
-  color: #6b7280;
-  margin-top: 16px;
-}
-
-.signup a {
-  color: #d4a84b;
-  text-decoration: none;
-  font-weight: 600;
-}
-
-.signup a:hover {
-  color: #ffffff;
-}
 
 /* Header form stylings ends here */
