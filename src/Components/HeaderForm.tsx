@@ -14,12 +14,10 @@ const HeaderForm: React.FC = () => {
   return (
       <div className="form-container">
         <div className="form-content">
-          <IconContext.Provider value={{"size": "3rem"}}>
           <div className="title-section">
-            <WiTrain/>
+            <WiTrain size={"3rem"} />
             <p className="title">Express-Train</p>
           </div>
-          </IconContext.Provider>
           <form className="form">
 
             {/* First input field */}

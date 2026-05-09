@@ -2,8 +2,6 @@
 
 * {
     box-sizing: border-box;
-    padding: 0;
-    margin: 0;
 }
 
 @font-face {
@@ -36,6 +34,11 @@
     src: url('./assets/fonts/Sekuya-Regular.ttf') format('opentype');
 }
 
+@font-face {
+    font-family: 'SuperSliced';
+    src: url('./assets/fonts/SuperSliced.ttf') format('opentype');
+}
+
 @theme {
     --font-Bitcount: "Bitcount_Grid", sans-serif;
     --font-DancingScript: "DancingScript", sans-serif;
@@ -43,11 +46,14 @@
     --font-Roboto: "Roboto", sans-serif;
     --font-SairaStencil: "SairaStencil", sans-serif;
     --font-Sekuya: "Sekuya", sans-serif;
+    --font-SuperSlice: "SuperSliced", sans-serif;
     --color-darkMode-primary: #0b0f1a;
     --color-darkMode-secondary: #111827;
     --color-darkMode-third: #e5e7eb;
     --color-darkMode-border-color: #1a2d47;
-    --color-darkMode-border-color1: #2a4a70
+    --color-darkMode-border-color1: #2a4a70;
+    /* --shadow-t1: rgba(210, 46, 170, 0.4) 0px 5px, rgba(110, 46, 170, 0.3) 0px 10px, rgba(143, 46, 170, 0.2) 0px 15px, rgba(200, 46, 170, 0.1) 0px 20px, rgba(211, 46, 170, 0.05) 0px 25px; */
+    --shadow-t1: 15px 25px 2px black;
 }
 
 @layer components {
@@ -75,6 +81,8 @@
   }
 
 }
+
+.global-class-name {}
 
 /* From Uiverse.io by adamgiebl */ 
 .contact-us-btn {
