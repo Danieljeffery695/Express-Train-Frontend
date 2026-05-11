@@ -369,7 +369,283 @@
 
 
 
-
-
-
 /* Header form stylings ends here */
+
+/* SectionOne Toggle Button stylings start here */
+
+ .SectionOne__Toggle__Div {
+    margin: auto;
+    font-weight: 900;
+    font-size: 6rem;
+    display: flex;
+    justify-content: center;
+  }
+
+  .SectionOne__toggle__label {
+    margin-top: 10px;
+    transform: scale(0.85) translateX(0.5rem);
+    width: 60px;
+    height: 155px;
+    background: linear-gradient(744deg, #ea6f62 20%, #cccccc00 40%, #6bae67 80%);
+    background-color: #ea6f62;
+    border-radius: 1.8rem;
+    padding: 0.25rem 0;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    transition: background 0.3s 0.3s;
+    transition-delay: 0.35s;
+  }
+
+  .SectionOne__toggle__circle {
+    color: hsl(0, 0%, 30%);
+    width: 20px;
+    height: 20px;
+    background-color: hsla(0, 0%, 95%, 0);
+    outline-style: solid;
+    outline-width: 17.5px;
+    border-radius: 50%;
+    margin-top: calc(155px - 20px * 2.25);
+    transition: margin 0.4s ease-in;
+  }
+
+  .SectionOne__toggle__text {
+    background: linear-gradient(0deg, #4d4d4d 0%, #4d4d4d88 50%, #56704c2e 56.5%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    display: flex;
+    flex-direction: column;
+    line-height: 0.8;
+  }
+
+  #check:checked + .SectionOne__toggle__label > .SectionOne__toggle__circle {
+    margin-top: calc(20px / 1.25);
+  }
+
+  #check:checked + .SectionOne__toggle__label ~ .SectionOne__toggle__text {
+    background: linear-gradient(
+      180deg,
+      #4d4d4d 0%,
+      #4d4d4d88 45%,
+      #56704c2e 47.5%
+    );
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+
+  @keyframes grad {
+    0% {
+      background: linear-gradient(
+        0deg,
+        #4d4d4d 0%,
+        #4d4d4d88 50%,
+        #56704c2e 56.5%
+      );
+      -webkit-background-clip: text;
+      background-clip: text;
+    }
+    10% {
+      background: linear-gradient(
+        2deg,
+        #4d4d4d 0%,
+        #4d4d4d88 47.5%,
+        #56704c2e 56.5%
+      );
+      -webkit-background-clip: text;
+      background-clip: text;
+    }
+    20% {
+      background: linear-gradient(
+        10deg,
+        #4d4d4d 0%,
+        #4d4d4d88 47.5%,
+        #56704c2e 56.5%
+      );
+      -webkit-background-clip: text;
+      background-clip: text;
+    }
+    40% {
+      background: linear-gradient(
+        45deg,
+        #4d4d4d 0%,
+        #4d4d4d88 47.5%,
+        #56704c2e 56.5%
+      );
+      -webkit-background-clip: text;
+      background-clip: text;
+    }
+    50% {
+      background: linear-gradient(
+        90deg,
+        #4d4d4d 0%,
+        #4d4d4d88 47.5%,
+        #56704c2e 56.5%
+      );
+      -webkit-background-clip: text;
+      background-clip: text;
+    }
+    60% {
+      background: linear-gradient(
+        135deg,
+        #4d4d4d 0%,
+        #4d4d4d88 47.5%,
+        #56704c2e 56.5%
+      );
+      -webkit-background-clip: text;
+      background-clip: text;
+    }
+    75% {
+      background: linear-gradient(
+        150deg,
+        #4d4d4d 0%,
+        #4d4d4d88 47.5%,
+        #56704c2e 56.5%
+      );
+      -webkit-background-clip: text;
+      background-clip: text;
+    }
+    90% {
+      background: linear-gradient(
+        170deg,
+        #4d4d4d 0%,
+        #4d4d4d88 47.5%,
+        #56704c2e 56.5%
+      );
+      -webkit-background-clip: text;
+      background-clip: text;
+    }
+    95% {
+      background: linear-gradient(
+        175deg,
+        #4d4d4d 0%,
+        #4d4d4d88 47.5%,
+        #56704c2e 56.5%
+      );
+      -webkit-background-clip: text;
+      background-clip: text;
+    }
+    100% {
+      background: linear-gradient(
+        180deg,
+        #4d4d4d 0%,
+        #4d4d4d88 45%,
+        #56704c2e 47.5%
+      );
+      -webkit-background-clip: text;
+      background-clip: text;
+    }
+  }
+
+  #check:checked + .SectionOne__toggle__label {
+    background-color: #6bae67;
+  };
+
+
+/* SectionOne Toggle Button stylings ends here */
+
+
+/* SectionOne Testimony Card stylings start here */
+
+/* .card {
+    position: absolute;
+    top: 10%;
+    right: 6%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 220px;
+    border-radius: 24px;
+    line-height: 1.6;
+    transition: all 0.48s cubic-bezier(0.23, 1, 0.32, 1);
+  }
+
+  .content {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 24px;
+    padding: 36px;
+    border-radius: 22px;
+    color: #ffffff;
+    overflow: hidden;
+    background: #0a3cff;
+    transition: all 0.48s cubic-bezier(0.23, 1, 0.32, 1);
+  }
+
+  .content::before {
+    position: absolute;
+    content: "";
+    top: -4%;
+    left: 50%;
+    width: 90%;
+    height: 90%;
+    transform: translate(-50%);
+    background: #ced8ff;
+    z-index: -1;
+    transform-origin: bottom;
+
+    border-radius: inherit;
+    transition: all 0.48s cubic-bezier(0.23, 1, 0.32, 1);
+  }
+
+  .content::after {
+    position: absolute;
+    content: "";
+    top: -8%;
+    left: 50%;
+    width: 80%;
+    height: 80%;
+    transform: translate(-50%);
+    background: #e7ecff;
+    z-index: -2;
+    transform-origin: bottom;
+    border-radius: inherit;
+    transition: all 0.48s cubic-bezier(0.23, 1, 0.32, 1);
+  }
+
+  .content svg {
+    width: 48px;
+    height: 48px;
+  }
+
+  .content .para {
+    z-index: 1;
+    opacity: 1;
+    font-size: 18px;
+    transition: all 0.48s cubic-bezier(0.23, 1, 0.32, 1);
+  }
+
+  .content .link {
+    z-index: 1;
+    color: #fea000;
+    text-decoration: none;
+    font-family: inherit;
+    font-size: 16px;
+    transition: all 0.48s cubic-bezier(0.23, 1, 0.32, 1);
+  }
+
+  .content .link {
+    text-decoration: underline;
+  }
+
+  .card {
+    transform: translate(0px, -16px);
+  }
+
+  .card .content::before {
+    rotate: -8deg;
+    top: 0;
+    width: 100%;
+    height: 100%;
+  }
+
+  .card .content::after {
+    rotate: 8deg;
+    top: 0;
+    width: 100%;
+    height: 100%;
+  } */
+
+/* SectionOne Testimony Card stylings end here */
