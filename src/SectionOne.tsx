@@ -23,10 +23,6 @@ const SectionOne: React.FC = () => {
           inventore nihil. Necessitatibus tempore atque quas doloribus
           adipisci{" "}
         </p>
-        {/* <div>
-          <button>One Way Trip</button>
-          <button>All Round Trip</button>
-        </div> */}
 
         <div className="SectionOne__Toggle__Div">
           <input hidden id="check" name="check" type="checkbox" />
