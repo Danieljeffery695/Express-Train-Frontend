@@ -9,11 +9,11 @@ import SlideContents from "./Components/SlideElements";
 // Import Swiper styles
 import 'swiper/css';
 import 'swiper/css/effect-coverflow';
-import 'swiper/css/pagination';
+// import 'swiper/css/pagination';
 
 
 // import required modules
-import { EffectCoverflow,  Pagination } from 'swiper/modules';
+import { EffectCoverflow } from 'swiper/modules';
 
 
 const SectionTwo: React.FC = () => {
@@ -36,9 +36,7 @@ const SectionTwo: React.FC = () => {
           <div className="w-full bg-red-400 ">
             <Swiper
               effect={"coverflow"}
-              grabCursor={true}
               centeredSlides={true}
-              centeredSlidesBounds={true}
               initialSlide={4}
               slidesPerView={2}
               coverflowEffect={{
@@ -49,10 +47,10 @@ const SectionTwo: React.FC = () => {
                 slideShadows: false,
               }}
               pagination={true}
-              modules={[EffectCoverflow, Pagination]}
+              modules={[EffectCoverflow]}
               className="mySwiper"
             >
-              {Array.from({ length: 10 }).map((ele, index) => (
+              {Array.from({ length: 10 }).map(() => (
                 <SwiperSlide> <SlideContents/> </SwiperSlide>
               ))}
             </Swiper>
