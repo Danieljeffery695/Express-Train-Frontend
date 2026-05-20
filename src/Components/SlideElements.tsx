@@ -9,8 +9,9 @@ const SlideContents: React.FC = () => {
     const slidersElement = useSwiper();
     const swiperSlidersElement = useSwiperSlide();
     return (
-         <div className={`w-175 h-112.5 relative ${swiperSlidersElement.isActive ? "" : "backdrop-blur-2xl backdrop-opacity-10"}`}>
+         <div className={`w-175 h-112.5 relative ${swiperSlidersElement.isActive ? "" : "opacity-60"}`}>
             <img src="testPhoto1.jpg" alt="BgPics" className="size-full object-cover absolute -z-5"/>
+            <div className={!swiperSlidersElement.isActive ? `absolute size-full bg-black mix-blend-overlay` : "hidden"}></div>
             <div className="w-80 h-25 flex gap-3 bg-amber-600 justify-center items-center">
                 <span><IoTrainSharp size={"1.5rem"}/></span>
                 <p className="text-lg text-white font-Playfair">Add to Favorite</p>
@@ -40,12 +41,13 @@ const SlideContents: React.FC = () => {
               </div>
             </div>
 
-            {/* <span className={`size-[60px] rounded-[50%] bg-white absolute -left-7 top-1/2 z-10 flex justify-center items-center 
-              ${swiperSlidersElement.isActive ? "" : "hidden"}`}>
+            <span className={`size-[60px] rounded-[50%] bg-white absolute -left-7 top-1/2 z-10 flex justify-center items-center 
+              ${swiperSlidersElement.isActive && !slidersElement.isBeginning ? "" : "hidden"}`} onClick={() => slidersElement.slidePrev()}>
               <IoMdArrowRoundBack size={"1.4rem"}/>
-            </span> */}
+            </span>
 
-            <span className="size-[60px] rounded-[50%] bg-white absolute -right-7 top-1/2 z-10 flex justify-center items-center">
+            <span className={`size-[60px] rounded-[50%] bg-white absolute -right-7 top-1/2 z-10 flex justify-center items-center
+                ${swiperSlidersElement.isActive && !slidersElement.isEnd  ? "" : "hidden"}`} onClick={() => slidersElement.slideNext()}>
               <IoMdArrowRoundForward size={"1.4rem"}/>
             </span>
           </div>
