@@ -82,6 +82,13 @@
 
 }
 
+.swiper-slide:not(.swiper-slide-active) {
+  transform: rotate(0.001deg);
+  outline: 1px solid transparent;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+}
+
 .global-class-name {}
 
 /* From Uiverse.io by adamgiebl */ 
@@ -172,6 +179,7 @@
 .form-content {
   padding: 22px 22px 22px;
 }
+
 
 .title-section {
   display: flex;
