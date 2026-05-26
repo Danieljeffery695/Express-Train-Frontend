@@ -3,8 +3,8 @@ import React from "react";
 interface ButtonProps {
     width: string,
     height: string,
-    firstText: string,
-    secondText: string
+    firstText?: string,
+    secondText?: string
 };
 
 const ButtonOne: React.FC<ButtonProps> = ({width, height, firstText = "Board me", secondText = "Here we go"}) => {

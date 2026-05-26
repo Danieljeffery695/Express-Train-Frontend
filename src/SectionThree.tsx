@@ -1,11 +1,10 @@
 import React from "react";
-import { BsFillBuildingsFill } from "react-icons/bs";
 import { WiTrain } from "react-icons/wi";
 
 
 const SectionThree: React.FC = () => {
     return (
-      <div className="w-full h-256 bg-amber-300">
+      <div className="w-full h-325 bg-amber-300">
         <div className="w-full h-17.5 flex mt-5">
           <div className="flex-1 flex items-center justify-center gap-2 px-5">
             <span className="flex gap-2">
@@ -107,7 +106,39 @@ const SectionThree: React.FC = () => {
                 </div>
             </div>
         </div>
-      </div>
+
+        <div className="w-full h-72.5 flex flex-col justify-between">
+            <button className="w-42.5 h-20 text-base font-Sekuya self-center border-2 border-white rounded-3xl">Vei Button</button>
+
+                <div className="w-full h-17.5 flex">
+          <div className="flex-1 flex items-center justify-center gap-2 px-5">
+            <span className="flex gap-2">
+              <WiTrain size={"1.4rem"} style={{ transform: "scaleX(-1)" }} />
+            </span>
+            <hr className="text-black font-bold flex-2 border-2 border-dashed rounded-2xl" />
+            <span className="flex gap-2">
+              <WiTrain size={"1.4rem"} />
+            </span>
+          </div>
+
+          <h1 className="flex-2 font-SairaStencil text-3xl text-center">
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Eos dolores
+            facilis adipisci voluptatibus id officiis iste ullam sed esse unde
+            expl
+          </h1>
+
+          <div className="flex-1 flex items-center justify-center gap-2 px-5">
+            <span className="flex gap-2">
+              <WiTrain size={"1.4rem"} style={{ transform: "scaleX(-1)" }} />
+            </span>
+            <hr className="text-black font-bold flex-2 border-2 border-dashed rounded-2xl" />
+            <span className="flex gap-2">
+              <WiTrain size={"1.4rem"} />
+            </span>
+          </div>
+            </div>
+        </div>
+        </div>
     );
 }
 
