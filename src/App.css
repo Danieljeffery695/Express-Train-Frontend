@@ -39,6 +39,16 @@
     src: url('./assets/fonts/SuperSliced.ttf') format('opentype');
 }
 
+@font-face {
+    font-family: 'Cafillen';
+    src: url('./assets/fonts/CafillenRegular.otf') format('opentype');
+}
+
+@font-face {
+    font-family: 'Runtime';
+    src: url('./assets/fonts/RuntimeRegular.otf') format('opentype');
+}
+
 @theme {
     --font-Bitcount: "Bitcount_Grid", sans-serif;
     --font-DancingScript: "DancingScript", sans-serif;
@@ -47,6 +57,8 @@
     --font-SairaStencil: "SairaStencil", sans-serif;
     --font-Sekuya: "Sekuya", sans-serif;
     --font-SuperSlice: "SuperSliced", sans-serif;
+    --font-Cafillen: "Cafillen", sans-serif;
+    --font-Runtime: "Runtime", sans-serif;
     --color-darkMode-primary: #0b0f1a;
     --color-darkMode-secondary: #111827;
     --color-darkMode-third: #e5e7eb;
