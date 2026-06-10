@@ -1,7 +1,7 @@
 import React from "react";
 
 const SectionFour: React.FC = () => {
-    return <div className="w-full h-350 bg-amber-400">
+    return <div className="w-full h-350">
         <div className="w-full h-1/2 flex px-5">
             <div className="flex-1 p-5">
                 <h1 className="text-9xl font-Cafillen my-11">El <br/> Cuerpo</h1>
