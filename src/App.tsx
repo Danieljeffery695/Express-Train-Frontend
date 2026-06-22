@@ -1,30 +1,28 @@
 import React from "react";
-// import NavBar from "./Navbar";
-// import Header from "./Header";
-// import SectionOne from "./SectionOne";
-// import SectionTwo from "./SectionTwo";
-// import SectionThree from "./SectionThree";
-// import SectionFour from "./SectionFour";
-// import SectionFive from "./SectionFive";
-import Footer from "./Footer";
+// import NavBar from "./ui/Navbar";
+import AppLayout from "./AppLayout";
+import Login from "./pages/Login";
+import SignUp from "./pages/SignUp";
+import { createBrowserRouter } from "react-router";
+import { RouterProvider } from "react-router/dom";
 import "./App.css";
+
+const router = createBrowserRouter([
+  {
+    path: "/",
+    element: <AppLayout/>,
+  },
+  {path: "login", "Component": Login},
+  {path: "register", "Component": SignUp}
+]);
 
 const App: React.FC = () => {
   return (
     <div className="w-full h-screen darkMode">
       {/* <NavBar/> */}
-      <div className="size-full overflow-x-hidden overflow-y-scroll">
-        {/* <Header/> */}
-        {/* <SectionOne/> */}
-        {/* <SectionTwo/> */}
-        {/* <SectionThree/> */}
-        {/* <SectionFour/> */}
-        {/* <SectionFive/> */}
-        <Footer/>
-      </div>
-
+      <RouterProvider router={router}/>
     </div>
   );
-}
+};
 
 export default App;
