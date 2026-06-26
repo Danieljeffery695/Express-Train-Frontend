@@ -101,7 +101,19 @@
   backface-visibility: hidden;
 }
 
-.global-class-name {}
+/* Removing number Arrows/Spinners from input */
+
+/* Chrome, Safari, Edge, Opera.. */
+input::-webkit-outer-spin-button, input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* FireFox */
+
+input[type=number] {
+  -moz-appearance: textfield;
+}
 
 /* From Uiverse.io by adamgiebl */ 
 .contact-us-btn {
