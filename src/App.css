@@ -101,21 +101,7 @@
   backface-visibility: hidden;
 }
 
-/* Removing number Arrows/Spinners from input */
 
-/* Chrome, Safari, Edge, Opera.. */
-input::-webkit-outer-spin-button, input::-webkit-inner-spin-button {
-  -webkit-appearance: none;
-  margin: 0;
-}
-
-/* FireFox */
-
-input[type=number] {
-  -moz-appearance: textfield;
-}
-
-/* From Uiverse.io by adamgiebl */ 
 .contact-us-btn {
   background: #a370f0;
   color: white;
@@ -173,7 +159,6 @@ input[type=number] {
 
 /* Header form stylings start here */
 
-/* From Uiverse.io by santhosh_2608 */ 
 .form-container {
   width: 100%;
   max-width: 600px;
