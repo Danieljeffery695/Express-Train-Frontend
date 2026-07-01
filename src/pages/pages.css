@@ -1,0 +1,133 @@
+.test-test::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, 
+  rgba(10, 15, 25, 1.15) 0%,
+  rgba(10, 15, 25, 1.5) 15%,
+  rgba(10, 15, 25, 0.95) 30%,
+  rgba(10, 15, 25, 0.85) 45%,
+  rgba(10, 15, 25, 0.75) 65%,
+  rgba(10, 15, 25, 0.65) 80%,
+  rgba(10, 15, 25, 0.45) 85%,
+  rgba(10, 15, 25, 0.35) 90%);
+  /* rgba(10, 15, 25, 0.25) 94%, */
+  /* rgba(10, 15, 25, 0.15) 98%, */
+  /* rgba(10, 15, 25, 0.7) 100%); */
+  border-radius: 32px;
+  z-index: 5;
+}
+
+/* Removing number Arrows/Spinners from input */
+
+/* Chrome, Safari, Edge, Opera.. */
+input::-webkit-outer-spin-button, input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* FireFox */
+
+input[type=number] {
+  -moz-appearance: textfield;
+}
+
+/* signup input styling start here */
+.inputbox {
+  position: relative;
+}
+
+.inputbox input {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  padding: 20px 45px 10px 10px;
+  outline: none;
+  box-shadow: none;
+  border: none;
+  transition: 0.3s;
+  z-index: 10;
+
+}
+
+.inputbox i {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  height: 2px;
+  border-top: 2px solid gray;
+  border-left: 2px solid gray;
+  border-right: 2px solid gray;
+  border-top-left-radius: 12px;
+  border-top-right-radius: 12px;
+  transition: 0.5s;
+  pointer-events: none;
+}
+
+.inputbox input:valid ~i,
+.inputbox input:focus ~i {
+  height: 100%;
+}
+
+/* Input label */
+.input-label {
+  position: absolute;
+  top: 0;
+  left: 0;
+  color: rgba(204, 204, 204, 0);
+  pointer-events: none;
+  transition: all 0.3s ease;
+}
+
+/* Input field:focus styles */
+.inputbox input:focus + .input-label {
+  top: -20px;
+  font-size: 12px;
+  color: #007bff;
+  width: 100%;
+}
+
+
+.inputbox:before,
+.inputbox:after {
+  content: "";
+  left: 0;
+  right: 0;
+  position: absolute;
+  pointer-events: none;
+  bottom: -1px;
+  z-index: 4;
+  height: 3px;
+  width: 100%;
+}
+
+.inputbox:before {
+  transition: border-bottom-color 4s cubic-bezier(0.4, 0, 0.2, 1) 5s;
+  border-bottom: 1px solid transparent;
+}
+
+.inputbox:focus-within:before {
+  border-bottom: 1px solid gray;
+  transform: scaleX(1);
+}
+
+.inputbox:focus-within:after {
+  border-bottom: 2px solid gray;
+  transform: scaleX(1);
+}
+
+.inputbox:after {
+  content: "";
+  transform: scaleX(0);
+  transition: transform 10s cubic-bezier(0, 0, 0.2, 1) 5ms;
+  will-change: transform;
+  /* border-bottom: 2px solid white; */
+}
+
+
+
+/* signup input styling end here */
