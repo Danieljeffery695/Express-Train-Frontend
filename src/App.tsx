@@ -1,6 +1,6 @@
 import React from "react";
 // import NavBar from "./ui/Navbar";
-import AppLayout from "./AppLayout";
+import AppLayout from "./HomePageLayout";
 import Login from "./pages/Login";
 import SignUp from "./pages/SignUp";
 import { createBrowserRouter } from "react-router";
