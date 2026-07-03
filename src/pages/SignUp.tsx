@@ -1,13 +1,48 @@
-import React, { useRef, useState } from "react";
+import React, { useRef, useState, useReducer } from "react";
 import { FaEye } from "react-icons/fa";
 import { FaEyeSlash } from "react-icons/fa";
 import { renderToString } from "react-dom/server";
 import "./pages.css";
 
+interface ReducerState {
+  inputType: string;
+  errorMessage: string;
+}
+
+interface ReducerAction {
+  type: string;
+  payload: string;
+}
+
+function reducer(state: ReducerState, action: ReducerAction) {
+  switch (action.type) {
+    case "TextType":
+      console.log(state, action);
+      return {
+        inputType: action.type,
+        errorMessage: action.payload,
+      };
+    case "NumberType":
+      return {
+        inputType: action.type,
+        errorMessage: action.payload,
+      };
+    default:
+      return { ...state, errorMessage: "None" };
+  }
+}
+
 const SignUp: React.FC = () => {
   const inputShowPassword = useRef<HTMLInputElement | null>(null);
   const inputShowConfirmPassword = useRef<HTMLInputElement | null>(null);
   const [errorActive, setErrorActive] = useState<boolean>();
+  // const [inputValue, setInputValue] = useState<string[]>();
+  const initialState: ReducerState = {
+    inputType: "None",
+    errorMessage: "None",
+  };
+  const [state, dispatch] = useReducer(reducer, initialState);
+  const { inputType, errorMessage } = state;
 
   function showPassword(
     inputElement: React.RefObject<HTMLInputElement | null>,
@@ -34,15 +69,28 @@ const SignUp: React.FC = () => {
         console.log("Text input here");
         if (e.currentTarget.value == "") {
           setErrorActive(true);
+          dispatch({
+            type: "TextType",
+            payload: "Sorry input field can't be left empty",
+          });
         } else {
           setErrorActive(false);
+          dispatch({
+            type: "TextType",
+            payload: "",
+          });
         }
         break;
       case "email":
         console.log("Email input here");
         break;
       case "number":
-        console.log("Number input here");
+        if (typeof e.currentTarget.value != "number")
+          dispatch({
+            type: "NumberType",
+            payload: "Please insert a valid Phone number!!",
+          });
+        console.log("blah blah blah sheep, are you feeling good!!");
         break;
       case "password":
         console.log("Password input here");
@@ -141,7 +189,15 @@ const SignUp: React.FC = () => {
               >
                 Enter text
               </label>
-              <i></i>
+              <i
+                style={
+                  {
+                    "--contents": `"${inputType == "TextType" ? errorMessage : ""}"`,
+                  } as React.CSSProperties
+                }
+                className={`after:text-base after:text-red-600 after:font-Runtime after:absolute after:bottom-0 after:left-0 after:w-full
+               after:z-100 after:content-(--contents) after:pl-[10px] after:not-italic`}
+              ></i>
             </div>
 
             <div className="w-125 min-w-75 h-17.5 inputbox">
