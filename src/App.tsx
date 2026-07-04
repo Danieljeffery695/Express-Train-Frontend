@@ -10,17 +10,17 @@ import "./App.css";
 const router = createBrowserRouter([
   {
     path: "/",
-    element: <AppLayout/>,
+    element: <AppLayout />,
   },
-  {path: "login", "Component": Login},
-  {path: "register", "Component": SignUp}
+  { path: "login", Component: Login },
+  { path: "register", Component: SignUp },
 ]);
 
 const App: React.FC = () => {
   return (
     <div className="w-full h-screen darkMode">
       {/* <NavBar/> */}
-      <RouterProvider router={router}/>
+      <RouterProvider router={router} />
     </div>
   );
 };
