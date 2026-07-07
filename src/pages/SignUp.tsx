@@ -1,48 +1,104 @@
-import React, { useRef, useState, useReducer } from "react";
+import React, { useRef, useReducer } from "react";
 import { FaEye } from "react-icons/fa";
 import { FaEyeSlash } from "react-icons/fa";
 import { renderToString } from "react-dom/server";
+import { sign_in_verification_fn } from "../Utils/Functions/Sign-in-verification-fn";
 import "./pages.css";
 
 interface ReducerState {
   inputType: string;
   errorMessage: string;
+  inputTypeErrorSwitch: boolean;
 }
 
-interface ReducerAction {
+export interface ReducerAction {
   type: string;
-  payload: string;
+  payload: {
+    actionErrorMessage: string;
+    actionInputTypeErrorSwitch: boolean;
+  };
 }
 
-function reducer(state: ReducerState, action: ReducerAction) {
+function reducer(state: Array<ReducerState>, action: ReducerAction) {
   switch (action.type) {
     case "TextType":
       console.log(state, action);
-      return {
-        inputType: action.type,
-        errorMessage: action.payload,
-      };
+      return [
+        ...state,
+        {
+          inputType: action.type,
+          errorMessage: action.payload.actionErrorMessage,
+          inputTypeErrorSwitch: action.payload.actionInputTypeErrorSwitch,
+        },
+      ];
     case "NumberType":
-      return {
-        inputType: action.type,
-        errorMessage: action.payload,
-      };
+      return [
+        ...state,
+        {
+          inputType: action.type,
+          errorMessage: action.payload.actionErrorMessage,
+          inputTypeErrorSwitch: action.payload.actionInputTypeErrorSwitch,
+        },
+      ];
+    case "EmailType":
+      return [
+        ...state,
+        {
+          inputType: action.type,
+          errorMessage: action.payload.actionErrorMessage,
+          inputTypeErrorSwitch: action.payload.actionInputTypeErrorSwitch,
+        },
+      ];
+    case "PassWordType":
+      return [
+        ...state,
+        {
+          inputType: action.type,
+          errorMessage: action.payload.actionErrorMessage,
+          inputTypeErrorSwitch: action.payload.actionInputTypeErrorSwitch,
+        },
+      ];
+    case "ConfirmPassWordType":
+      return [
+        ...state,
+        {
+          inputType: action.type,
+          errorMessage: action.payload.actionErrorMessage,
+          inputTypeErrorSwitch: action.payload.actionInputTypeErrorSwitch,
+        },
+      ];
     default:
-      return { ...state, errorMessage: "None" };
+      return { ...state };
   }
 }
 
 const SignUp: React.FC = () => {
   const inputShowPassword = useRef<HTMLInputElement | null>(null);
   const inputShowConfirmPassword = useRef<HTMLInputElement | null>(null);
-  const [errorActive, setErrorActive] = useState<boolean>();
-  // const [inputValue, setInputValue] = useState<string[]>();
-  const initialState: ReducerState = {
-    inputType: "None",
-    errorMessage: "None",
-  };
+  const initialState: Array<ReducerState> = [
+    {
+      inputType: "None",
+      errorMessage: "None",
+      inputTypeErrorSwitch: false,
+    },
+  ];
   const [state, dispatch] = useReducer(reducer, initialState);
-  const { inputType, errorMessage } = state;
+  // const { inputType, errorMessage, inputTypeErrorSwitch } = state;
+  const nameInputFilter = state
+    .filter((inputData) => inputData.inputType == "TextType")
+    .at(-1);
+  const emailInputFilter = state
+    .filter((inputData) => inputData.inputType == "EmailType")
+    .at(-1);
+  const numberInputFilter = state
+    .filter((inputData) => inputData.inputType == "NumberType")
+    .at(-1);
+  const passwordInputFilter = state
+    .filter((inputData) => inputData.inputType == "PassWordType")
+    .at(-1);
+  const confirmPasswordInputFilter = state
+    .filter((inputData) => inputData.inputType == "ConfirmPassWordType")
+    .at(-1);
 
   function showPassword(
     inputElement: React.RefObject<HTMLInputElement | null>,
@@ -64,41 +120,13 @@ const SignUp: React.FC = () => {
   }
 
   const inputChecks = (e: React.FocusEvent<HTMLInputElement>) => {
-    switch (e.currentTarget.type) {
-      case "text":
-        console.log("Text input here");
-        if (e.currentTarget.value == "") {
-          setErrorActive(true);
-          dispatch({
-            type: "TextType",
-            payload: "Sorry input field can't be left empty",
-          });
-        } else {
-          setErrorActive(false);
-          dispatch({
-            type: "TextType",
-            payload: "",
-          });
-        }
-        break;
-      case "email":
-        console.log("Email input here");
-        break;
-      case "number":
-        if (typeof e.currentTarget.value != "number")
-          dispatch({
-            type: "NumberType",
-            payload: "Please insert a valid Phone number!!",
-          });
-        console.log("blah blah blah sheep, are you feeling good!!");
-        break;
-      case "password":
-        console.log("Password input here");
-        break;
-      default:
-        console.log(e.currentTarget.type);
-        break;
-    }
+    dispatch(sign_in_verification_fn(e, inputShowPassword));
+  };
+
+  const handleCopyTextpwd = (e: React.ClipboardEvent<HTMLInputElement>) => {
+    e.preventDefault();
+
+    e.clipboardData.setData("text/plain", "hahaha wise guy");
   };
   // gonna map switch statement to check different input field add implement different security measure.
   //   gotta make frontend security about confirm password to match exactly the password and number to be accurate with right length and not characters.
@@ -169,9 +197,8 @@ const SignUp: React.FC = () => {
           >
             <div
               className={`w-125 min-w-75 h-17.5 inputbox ${
-                errorActive
-                  ? ""
-                  : "after:border-b-3 after:border-b-green-500 rounded-b-2xl"
+                !nameInputFilter?.inputTypeErrorSwitch &&
+                "after:border-b-3 after:border-b-green-500 rounded-b-2xl"
               } `}
             >
               <input
@@ -179,7 +206,7 @@ const SignUp: React.FC = () => {
                 type="text"
                 className="text-xs text-white font-Sekuya bg-[url(staff.png)] bg-no-repeat bg-size-[25px] bg-position-[98%]"
                 autoComplete="off"
-                placeholder={`${errorActive ? "Sorry something went wrong..!!" : "Mr/Mrs"}`}
+                placeholder="Mr/Mrs Name"
                 id="name"
                 onBlur={(e) => inputChecks(e)}
               />
@@ -192,7 +219,7 @@ const SignUp: React.FC = () => {
               <i
                 style={
                   {
-                    "--contents": `"${inputType == "TextType" ? errorMessage : ""}"`,
+                    "--contents": `"${nameInputFilter?.inputTypeErrorSwitch ? nameInputFilter?.errorMessage : ""}"`,
                   } as React.CSSProperties
                 }
                 className={`after:text-base after:text-red-600 after:font-Runtime after:absolute after:bottom-0 after:left-0 after:w-full
@@ -200,7 +227,12 @@ const SignUp: React.FC = () => {
               ></i>
             </div>
 
-            <div className="w-125 min-w-75 h-17.5 inputbox">
+            <div
+              className={`w-125 min-w-75 h-17.5 inputbox ${
+                !emailInputFilter?.inputTypeErrorSwitch &&
+                "after:border-b-3 after:border-b-green-500 rounded-b-2xl"
+              }`}
+            >
               <input
                 required
                 type="email"
@@ -208,7 +240,6 @@ const SignUp: React.FC = () => {
                 autoComplete="off"
                 placeholder="Mr/Mrs Email"
                 id="email"
-                maxLength={254}
                 onBlur={(e) => inputChecks(e)}
               />
               <label
@@ -217,10 +248,23 @@ const SignUp: React.FC = () => {
               >
                 Email
               </label>
-              <i></i>
+              <i
+                style={
+                  {
+                    "--contents": `"${emailInputFilter?.inputTypeErrorSwitch ? emailInputFilter?.errorMessage : ""}"`,
+                  } as React.CSSProperties
+                }
+                className={`after:text-base after:text-red-600 after:font-Runtime after:absolute after:bottom-0 after:left-0 after:w-full
+               after:z-100 after:content-(--contents) after:pl-[10px] after:not-italic`}
+              ></i>
             </div>
 
-            <div className="w-125 min-w-75 h-17.5 inputbox">
+            <div
+              className={`w-125 min-w-75 h-17.5 inputbox ${
+                !numberInputFilter?.inputTypeErrorSwitch &&
+                "after:border-b-3 after:border-b-green-500 rounded-b-2xl"
+              }`}
+            >
               <input
                 required
                 type="number"
@@ -236,10 +280,23 @@ const SignUp: React.FC = () => {
               >
                 Phone Number
               </label>
-              <i></i>
+              <i
+                style={
+                  {
+                    "--contents": `"${numberInputFilter?.inputTypeErrorSwitch ? numberInputFilter?.errorMessage : ""}"`,
+                  } as React.CSSProperties
+                }
+                className={`after:text-base after:text-red-600 after:font-Runtime after:absolute after:bottom-0 after:left-0 after:w-full
+               after:z-100 after:content-(--contents) after:pl-[10px] after:not-italic`}
+              ></i>
             </div>
 
-            <div className="w-125 min-w-75 h-17.5 inputbox">
+            <div
+              className={`w-125 min-w-75 h-17.5 inputbox ${
+                !passwordInputFilter?.inputTypeErrorSwitch &&
+                "after:border-b-3 after:border-b-green-500 rounded-b-2xl"
+              }`}
+            >
               <input
                 required
                 type="password"
@@ -249,6 +306,9 @@ const SignUp: React.FC = () => {
                 id="password"
                 ref={inputShowPassword}
                 onBlur={(e) => inputChecks(e)}
+                onCopy={(e) => handleCopyTextpwd(e)}
+                onCut={(e) => handleCopyTextpwd(e)}
+                onPaste={(e) => handleCopyTextpwd(e)}
               />
               <label
                 htmlFor="password"
@@ -256,7 +316,15 @@ const SignUp: React.FC = () => {
               >
                 Password
               </label>
-              <i></i>
+              <i
+                style={
+                  {
+                    "--contents": `"${passwordInputFilter?.inputTypeErrorSwitch ? passwordInputFilter?.errorMessage : ""}"`,
+                  } as React.CSSProperties
+                }
+                className={`after:text-base after:text-red-600 after:font-Runtime after:absolute after:bottom-0 after:left-0 after:w-full
+               after:z-100 after:content-(--contents) after:pl-[10px] after:not-italic`}
+              ></i>
               <span
                 className="size-[50px] absolute z-30 top-4 left-[90%] text-center py-1.5 cursor-pointer"
                 onClick={(e) => showPassword(inputShowPassword, e)}
@@ -265,7 +333,12 @@ const SignUp: React.FC = () => {
               </span>
             </div>
 
-            <div className="w-125 min-w-75 h-17.5 inputbox">
+            <div
+              className={`w-125 min-w-75 h-17.5 inputbox ${
+                !confirmPasswordInputFilter?.inputTypeErrorSwitch &&
+                "after:border-b-3 after:border-b-green-500 rounded-b-2xl"
+              }`}
+            >
               <input
                 required
                 type="password"
@@ -275,6 +348,9 @@ const SignUp: React.FC = () => {
                 id="confirm-password"
                 ref={inputShowConfirmPassword}
                 onBlur={(e) => inputChecks(e)}
+                onCopy={(e) => handleCopyTextpwd(e)}
+                onCut={(e) => handleCopyTextpwd(e)}
+                onPaste={(e) => handleCopyTextpwd(e)}
               />
               <label
                 htmlFor="confirm-password"
@@ -282,7 +358,15 @@ const SignUp: React.FC = () => {
               >
                 Confirm Password
               </label>
-              <i></i>
+              <i
+                style={
+                  {
+                    "--contents": `"${confirmPasswordInputFilter?.inputTypeErrorSwitch ? confirmPasswordInputFilter?.errorMessage : ""}"`,
+                  } as React.CSSProperties
+                }
+                className={`after:text-base after:text-red-600 after:font-Runtime after:absolute after:bottom-0 after:left-0 after:w-full
+               after:z-100 after:content-(--contents) after:pl-[10px] after:not-italic`}
+              ></i>
               <span
                 className="size-[50px] absolute z-30 top-4 left-[90%] text-center py-1.5 cursor-pointer"
                 onClick={(e) => showPassword(inputShowConfirmPassword, e)}
