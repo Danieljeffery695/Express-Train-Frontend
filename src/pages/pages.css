@@ -137,6 +137,29 @@ input[type=number] {
   /* border-bottom: 2px solid white; */
 }
 
+/* modern standard styling for firefox & future-proof */
+
+.dropdown-scrollbar {
+  scrollbar-width: thin;
+  scroll-behavior: smooth;
+}
+
+/* webkit legacy scrollbar styling for (chrome, safari, Edge, Opera) */
+
+.dropdown-scrollbar::-webkit-scrollbar {
+  width: 8px;
+  scroll-behavior: smooth;
+}
+
+.dropdown-scrollbar::-webkit-scrollbar-thumb {
+  border-radius: 4px;
+  border: 2px solid transparent;
+}
+
+.dropdown-scrollbar::-webkit-scrollbar-track {
+  border-radius: 10px;
+  background-clip: padding-box;
+}
 
 
 /* signup input styling end here */

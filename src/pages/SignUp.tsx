@@ -1,4 +1,4 @@
-import React, { useRef, useReducer } from "react";
+import React, { useRef, useReducer, useEffect } from "react";
 import { FaEye } from "react-icons/fa";
 import { FaEyeSlash } from "react-icons/fa";
 import { renderToString } from "react-dom/server";
@@ -75,6 +75,8 @@ function reducer(state: Array<ReducerState>, action: ReducerAction) {
 const SignUp: React.FC = () => {
   const inputShowPassword = useRef<HTMLInputElement | null>(null);
   const inputShowConfirmPassword = useRef<HTMLInputElement | null>(null);
+  // const numberShowButton = useRef<HTMLButtonElement | null>(null);
+  const numberShowDiv = useRef<HTMLDivElement | null>(null);
   const initialState: Array<ReducerState> = [
     {
       inputType: "None",
@@ -118,6 +120,29 @@ const SignUp: React.FC = () => {
       e.currentTarget.innerHTML = `${iconString}`;
     }
   }
+
+  function showNumber(
+    showDiv: React.RefObject<HTMLDivElement | null>,
+    e: React.SyntheticEvent,
+  ): void {
+    e.preventDefault();
+    if (showDiv.current) showDiv.current?.classList.toggle("hidden");
+  }
+
+  useEffect(
+    function () {
+      if (
+        numberShowDiv.current &&
+        !numberShowDiv.current?.classList.toggle("hidden")
+      )
+        numberShowDiv.current?.querySelectorAll("p").forEach((ele) =>
+          ele.addEventListener("click", () => {
+            console.log("na me, na me, na me, na me get the town");
+          }),
+        );
+    },
+    [numberShowDiv],
+  );
 
   const inputChecks = (e: React.FocusEvent<HTMLInputElement>) => {
     dispatch(sign_in_verification_fn(e, inputShowPassword));
@@ -259,36 +284,107 @@ const SignUp: React.FC = () => {
               ></i>
             </div>
 
-            <div
-              className={`w-125 min-w-75 h-17.5 inputbox ${
-                !numberInputFilter?.inputTypeErrorSwitch &&
-                "after:border-b-3 after:border-b-green-500 rounded-b-2xl"
-              }`}
-            >
-              <input
-                required
-                type="number"
-                className="text-xs text-white font-Sekuya bg-[url(staff.png)] bg-no-repeat bg-size-[25px] bg-position-[98%]"
-                autoComplete="off"
-                placeholder="Mr/Mrs Phone Number"
-                id="number"
-                onBlur={(e) => inputChecks(e)}
-              />
-              <label
-                htmlFor="name"
-                className="input-label text-xl font-SairaStencil font-extralight text-gray-600"
+            <div className="w-125 h-17.5 flex">
+              <div className="w-[150px] h-17.5 relative">
+                {/* <div className="w-[130px] h-full border-b-3 border-b-gray-500">
+                  <h3 className="text-white text-2xl"> e.g +1</h3>
+                </div> */}
+                <button
+                  className=" w-[130px] h-full text-white border-b-2 border-transparent border-b-gray-500 outline-0 hover:border-2 hover:rounded-4xl 
+                            hover:border-gray-500 text-lg font-Runtime transition-all transition-discrete delay-150 duration-200 ease-in-out cursor-pointer"
+                  onClick={(e) => {
+                    showNumber(numberShowDiv, e);
+                  }}
+                >
+                  e.g +1
+                </button>
+                {/*gonna turn this into a button later */}
+                <div
+                  className="w-[130px] h-[200px] bg-red-500 absolute z-20 mt-2.5 rounded-[8px] py-2.5 overflow-y-auto overflow-x-hidden 
+                dropdown-scrollbar hidden"
+                  ref={numberShowDiv}
+                >
+                  <div className="w-full h-[45px] cursor-pointer border-b-2 border-b-gray-400 pt-1">
+                    <div className="w-[110px] h-[35px] hover:bg-gray-600 rounded-[5px] m-auto pl-2.5">
+                      <p className="font-Cafillen text-lg text-white">+234</p>
+                    </div>
+                  </div>
+
+                  <div className="h-[45px] cursor-pointer border-b-2 border-b-gray-400 pt-1">
+                    <div className="w-[120px] h-[35px] hover:bg-gray-600 rounded-[5px] m-auto pl-2.5">
+                      <p className="font-Cafillen text-lg text-white">+44</p>
+                    </div>
+                  </div>
+
+                  <div className="h-[45px] cursor-pointer border-b-2 border-b-gray-400 pt-1">
+                    <div className="w-[120px] h-[35px] hover:bg-gray-600 rounded-[5px] m-auto pl-2.5">
+                      <p className="font-Cafillen text-lg text-white">+71</p>
+                    </div>
+                  </div>
+
+                  <div className="h-[45px] cursor-pointer border-b-2 border-b-gray-400 pt-1">
+                    <div className="w-[120px] h-[35px] hover:bg-gray-600 rounded-[5px] m-auto pl-2.5">
+                      <p className="font-Cafillen text-lg text-white">+87</p>
+                    </div>
+                  </div>
+
+                  <div className="h-[45px] cursor-pointer border-b-2 border-b-gray-400 pt-1">
+                    <div className="w-[120px] h-[35px] hover:bg-gray-600 rounded-[5px] m-auto pl-2.5">
+                      <p className="font-Cafillen text-lg text-white">+664</p>
+                    </div>
+                  </div>
+
+                  <div className="h-[45px] cursor-pointer border-b-2 border-b-gray-400 pt-1">
+                    <div className="w-[120px] h-[35px] hover:bg-gray-600 rounded-[5px] m-auto pl-2.5">
+                      <p className="font-Cafillen text-lg text-white">+334</p>
+                    </div>
+                  </div>
+
+                  <div className="h-[45px] cursor-pointer border-b-2 border-b-gray-400 pt-1">
+                    <div className="w-[120px] h-[35px] hover:bg-gray-600 rounded-[5px] m-auto pl-2.5">
+                      <p className="font-Cafillen text-lg text-white">+96</p>
+                    </div>
+                  </div>
+
+                  <div className="h-[45px] cursor-pointer border-b-2 border-b-gray-400 pt-1">
+                    <div className="w-[120px] h-[35px] hover:bg-gray-600 rounded-[5px] m-auto pl-2.5">
+                      <p className="font-Cafillen text-lg text-white">+37</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div
+                className={`w-[350px] min-w-75 h-17.5 inputbox ${
+                  !numberInputFilter?.inputTypeErrorSwitch &&
+                  "after:border-b-3 after:border-b-green-500 rounded-b-2xl"
+                }`}
               >
-                Phone Number
-              </label>
-              <i
-                style={
-                  {
-                    "--contents": `"${numberInputFilter?.inputTypeErrorSwitch ? numberInputFilter?.errorMessage : ""}"`,
-                  } as React.CSSProperties
-                }
-                className={`after:text-base after:text-red-600 after:font-Runtime after:absolute after:bottom-0 after:left-0 after:w-full
+                <input
+                  required
+                  type="number"
+                  className="text-xs text-white font-Sekuya bg-[url(staff.png)] bg-no-repeat bg-size-[25px] bg-position-[98%]"
+                  autoComplete="off"
+                  placeholder="Mr/Mrs Phone Number"
+                  id="number"
+                  onBlur={(e) => inputChecks(e)}
+                />
+                <label
+                  htmlFor="name"
+                  className="input-label text-xl font-SairaStencil font-extralight text-gray-600"
+                >
+                  Phone Number
+                </label>
+                <i
+                  style={
+                    {
+                      "--contents": `"${numberInputFilter?.inputTypeErrorSwitch ? numberInputFilter?.errorMessage : ""}"`,
+                    } as React.CSSProperties
+                  }
+                  className={`after:text-base after:text-red-600 after:font-Runtime after:absolute after:bottom-0 after:left-0 after:w-full
                after:z-100 after:content-(--contents) after:pl-[10px] after:not-italic`}
-              ></i>
+                ></i>
+              </div>
             </div>
 
             <div
@@ -420,6 +516,7 @@ const SignUp: React.FC = () => {
               >
                 Test
               </button>
+              w
             </div>
           </div>
         </div>
