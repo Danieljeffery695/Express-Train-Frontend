@@ -31,7 +31,10 @@ export function sign_in_verification_fn(e: React.FocusEvent<HTMLInputElement>, p
           };
         }
         break;
-      case "email":
+      case "email": {  //Add Curly Braces to avoid lexical declaration in case block.
+
+        const emailVerification: RegExpMatchArray | null = e.currentTarget.value.match(/^[^\s@]+@[^\s@]+\.[^\s@]+$/); 
+        
         if(e.currentTarget.value == "") {
            reducer = {
                 type: "EmailType",
@@ -40,7 +43,16 @@ export function sign_in_verification_fn(e: React.FocusEvent<HTMLInputElement>, p
                 actionInputTypeErrorSwitch: true,
             },
           };
-         } else {
+         } else if(!emailVerification) {
+          reducer = {
+                type: "EmailType",
+                payload: {
+                actionErrorMessage: "Sorry not an email address",
+                actionInputTypeErrorSwitch: true,
+            },
+          };
+         } 
+         else {
             reducer = {
                 type: "EmailType",
                 payload: {
@@ -50,6 +62,7 @@ export function sign_in_verification_fn(e: React.FocusEvent<HTMLInputElement>, p
           };
         }
         break;
+       }
       case "number": { //Add Curly Braces to avoid lexical declaration in case block.
 
         const phoneNum: number | string = e.currentTarget.value.match(/\D/g) ? "" : +e.currentTarget.value; 
