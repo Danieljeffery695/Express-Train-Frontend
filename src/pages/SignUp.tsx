@@ -1,8 +1,9 @@
-import React, { useRef, useReducer, useEffect } from "react";
+import React, { useRef, useReducer, useEffect, useState } from "react";
 import { FaEye } from "react-icons/fa";
 import { FaEyeSlash } from "react-icons/fa";
 import { renderToString } from "react-dom/server";
 import { sign_in_verification_fn } from "../Utils/Functions/Sign-in-verification-fn";
+// import { motion, AnimatePresence, type Variants } from "framer-motion";
 import "./pages.css";
 
 interface ReducerState {
@@ -75,8 +76,12 @@ function reducer(state: Array<ReducerState>, action: ReducerAction) {
 const SignUp: React.FC = () => {
   const inputShowPassword = useRef<HTMLInputElement | null>(null);
   const inputShowConfirmPassword = useRef<HTMLInputElement | null>(null);
-  // const numberShowButton = useRef<HTMLButtonElement | null>(null);
+  const numberShowButton = useRef<HTMLButtonElement | null>(null);
   const numberShowDiv = useRef<HTMLDivElement | null>(null);
+  const [showNumber_P_Element, setshowNumber_P_Element] = useState<
+    Array<HTMLParagraphElement>
+  >([]);
+  const [showNumberDiv, setShowNumberDiv] = useState<boolean>(false);
   const initialState: Array<ReducerState> = [
     {
       inputType: "None",
@@ -84,6 +89,7 @@ const SignUp: React.FC = () => {
       inputTypeErrorSwitch: false,
     },
   ];
+
   const [state, dispatch] = useReducer(reducer, initialState);
   // const { inputType, errorMessage, inputTypeErrorSwitch } = state;
   const nameInputFilter = state
@@ -126,23 +132,34 @@ const SignUp: React.FC = () => {
     e: React.SyntheticEvent,
   ): void {
     e.preventDefault();
-    if (showDiv.current) showDiv.current?.classList.toggle("hidden");
+    if (showDiv.current) {
+      setShowNumberDiv(!showNumberDiv);
+      showDiv.current
+        ?.querySelectorAll("p")
+        .forEach((ele) => setshowNumber_P_Element((e) => [...e, ele]));
+    }
+    if (showNumber_P_Element.length > 8) setshowNumber_P_Element([]);
   }
 
-  useEffect(
-    function () {
-      if (
-        numberShowDiv.current &&
-        !numberShowDiv.current?.classList.toggle("hidden")
-      )
-        numberShowDiv.current?.querySelectorAll("p").forEach((ele) =>
-          ele.addEventListener("click", () => {
-            console.log("na me, na me, na me, na me get the town");
-          }),
-        );
-    },
-    [numberShowDiv],
-  );
+  useEffect(() => {
+    const gettingClickedNumber = (ele: HTMLParagraphElement) => {
+      setShowNumberDiv(false);
+      return ele.innerText;
+    };
+
+    if (showNumber_P_Element.length > 1) {
+      const showNumber_P_Element1 = showNumber_P_Element.filter(
+        (ele, index) => showNumber_P_Element.indexOf(ele) === index,
+      );
+      console.log(showNumber_P_Element1);
+      showNumber_P_Element1.forEach((ele) =>
+        ele.addEventListener("click", () => {
+          if (numberShowButton.current)
+            numberShowButton.current.innerText = gettingClickedNumber(ele);
+        }),
+      );
+    }
+  }, [showNumber_P_Element]);
 
   const inputChecks = (e: React.FocusEvent<HTMLInputElement>) => {
     dispatch(sign_in_verification_fn(e, inputShowPassword));
@@ -153,9 +170,6 @@ const SignUp: React.FC = () => {
 
     e.clipboardData.setData("text/plain", "hahaha wise guy");
   };
-  // gonna map switch statement to check different input field add implement different security measure.
-  //   gotta make frontend security about confirm password to match exactly the password and number to be accurate with right length and not characters.
-  // also gotta create another dropdown for different number zip code and maybe get an api to secure user location for easy accept to their regional number
 
   return (
     <div className="w-full h-325 pt-10 bg-white">
@@ -295,18 +309,19 @@ const SignUp: React.FC = () => {
                   onClick={(e) => {
                     showNumber(numberShowDiv, e);
                   }}
+                  ref={numberShowButton}
                 >
                   e.g +1
                 </button>
-                {/*gonna turn this into a button later */}
+                {/*remember to remove scrollbar on small devices. i mean invisible scrollbar */}
                 <div
-                  className="w-[130px] h-[200px] bg-red-500 absolute z-20 mt-2.5 rounded-[8px] py-2.5 overflow-y-auto overflow-x-hidden 
-                dropdown-scrollbar hidden"
+                  className={`w-[130px] h-[200px] bg-gray-600 absolute mt-2.5 rounded-[8px] py-2.5 overflow-y-auto overflow-x-hidden 
+                dropdown-scrollbar ${showNumberDiv ? "opacity-100 z-20 translate-y-1.5" : "opacity-0 translate-y-0"} [&>*:last-child]:border-b-0 transition-all transition-discrete duration-500 ease-in-out`}
                   ref={numberShowDiv}
                 >
                   <div className="w-full h-[45px] cursor-pointer border-b-2 border-b-gray-400 pt-1">
-                    <div className="w-[110px] h-[35px] hover:bg-gray-600 rounded-[5px] m-auto pl-2.5">
-                      <p className="font-Cafillen text-lg text-white">+234</p>
+                    <div className="w-[110px] h-[35px] hover:bg-gray-300 text-white hover:text-black rounded-[5px] m-auto pl-2.5">
+                      <p className="font-Cafillen text-lg">+234</p>
                     </div>
                   </div>
 
