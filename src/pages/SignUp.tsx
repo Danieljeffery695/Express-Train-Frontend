@@ -82,6 +82,8 @@ const SignUp: React.FC = () => {
     Array<HTMLParagraphElement>
   >([]);
   const [showNumberDiv, setShowNumberDiv] = useState<boolean>(false);
+  const [signUpLoading, setSignUpLoading] = useState(false);
+
   const initialState: Array<ReducerState> = [
     {
       inputType: "None",
@@ -171,6 +173,29 @@ const SignUp: React.FC = () => {
     e.clipboardData.setData("text/plain", "hahaha wise guy");
   };
 
+  async function handledSubmit(e: React.SyntheticEvent): Promise<void> {
+    e.preventDefault();
+
+    const form = e.target;
+    const formData = new FormData(form as HTMLFormElement);
+    const inputData = Object.fromEntries(formData.entries());
+    console.log(JSON.stringify(inputData));
+
+    try {
+      setSignUpLoading(true);
+      const respond = await fetch("http://localhost:3000/signup", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(inputData),
+      });
+      console.log(respond.statusText);
+    } catch (error) {
+      console.log(error);
+    } finally {
+      setSignUpLoading(false);
+    }
+  }
+
   return (
     <div className="w-full h-325 pt-10 bg-white">
       <div className="w-[90%] h-300 flex m-auto overflow-hidden rounded-4xl relative bg-[url(testPhoto1.jpg)] bg-fixed bg-cover bg-no-repeat test-test">
@@ -231,7 +256,7 @@ const SignUp: React.FC = () => {
           </div>
 
           <form
-            action=""
+            onSubmit={handledSubmit}
             className="w-full h-[600px] flex flex-col gap-9 items-center justify-center gap-3"
           >
             <div
@@ -242,6 +267,7 @@ const SignUp: React.FC = () => {
             >
               <input
                 required
+                name="name"
                 type="text"
                 className="text-xs text-white font-Sekuya bg-[url(staff.png)] bg-no-repeat bg-size-[25px] bg-position-[98%]"
                 autoComplete="off"
@@ -274,6 +300,7 @@ const SignUp: React.FC = () => {
             >
               <input
                 required
+                name="email"
                 type="email"
                 className="text-xs text-white font-Sekuya bg-[url(staff.png)] bg-no-repeat bg-size-[25px] bg-position-[98%]"
                 autoComplete="off"
@@ -377,6 +404,7 @@ const SignUp: React.FC = () => {
               >
                 <input
                   required
+                  name="phone"
                   type="number"
                   className="text-xs text-white font-Sekuya bg-[url(staff.png)] bg-no-repeat bg-size-[25px] bg-position-[98%]"
                   autoComplete="off"
@@ -410,6 +438,7 @@ const SignUp: React.FC = () => {
             >
               <input
                 required
+                name="password"
                 type="password"
                 className="text-xs text-white font-Sekuya"
                 autoComplete="off"
@@ -452,6 +481,7 @@ const SignUp: React.FC = () => {
             >
               <input
                 required
+                // name="username"
                 type="password"
                 className="text-xs text-white font-Sekuya"
                 autoComplete="off"
@@ -489,7 +519,7 @@ const SignUp: React.FC = () => {
             <div className="w-125 min-w-75 h-20! flex flex-col">
               <input
                 type="submit"
-                value="Sign UP"
+                value={`${signUpLoading ? "Loading..." : "Sign UP"}`}
                 className="w-full h-15 border-b-2 border-b-gray-500 border-transparent outline-0 hover:border-2 hover:rounded-4xl 
                             hover:border-gray-500 text-sm font-Sekuya transition-all transition-discrete delay-150 duration-200 ease-in-out cursor-pointer"
               />
