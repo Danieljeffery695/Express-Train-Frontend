@@ -3,6 +3,7 @@ import { FaEye } from "react-icons/fa";
 import { FaEyeSlash } from "react-icons/fa";
 import { renderToString } from "react-dom/server";
 import { sign_in_verification_fn } from "../Utils/Functions/Sign-in-verification-fn";
+import LoginModal from "../Components/LoginModal";
 // import { motion, AnimatePresence, type Variants } from "framer-motion";
 import "./pages.css";
 
@@ -83,6 +84,9 @@ const SignUp: React.FC = () => {
   >([]);
   const [showNumberDiv, setShowNumberDiv] = useState<boolean>(false);
   const [signUpLoading, setSignUpLoading] = useState(false);
+  const [signUpSuccess, setSignUpSuccess] = useState(false);
+  const [signUpFailed, setSignUpFailed] = useState(false);
+  const [signUpError, setSignUpError] = useState<Error | null>(null);
 
   const initialState: Array<ReducerState> = [
     {
@@ -173,24 +177,49 @@ const SignUp: React.FC = () => {
     e.clipboardData.setData("text/plain", "hahaha wise guy");
   };
 
-  async function handledSubmit(e: React.SyntheticEvent): Promise<void> {
+  async function handledSubmit(e: React.SubmitEvent): Promise<void> {
     e.preventDefault();
 
     const form = e.target;
     const formData = new FormData(form as HTMLFormElement);
     const inputData = Object.fromEntries(formData.entries());
+    if (numberShowButton.current) {
+      inputData["phone"] =
+        numberShowButton.current.innerText + formData.get("phone");
+    }
     console.log(JSON.stringify(inputData));
 
     try {
-      setSignUpLoading(true);
+      setSignUpLoading(true); // i will change to router loading because of bubbling up error
       const respond = await fetch("http://localhost:3000/signup", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(inputData),
       });
-      console.log(respond.statusText);
+      const data = await respond.json();
+      if (!respond.ok) {
+        console.log(data);
+        setSignUpFailed(true);
+        throw new Error(data?.Message);
+      }
+      console.log(data);
+
+      setSignUpSuccess(true); //being used for react framer animation
+      e.target.reset();
+      // clear all the input field
+      // if(respond.ok) redirect to main page
+      // throw error-->"respond.statusCode"
     } catch (error) {
       console.log(error);
+      if (error instanceof Error) {
+        setSignUpError(error);
+      } else {
+        setSignUpError(new Error("An unknown error occurs"));
+      }
+      setSignUpFailed(true);
+      // catch the error and put it in a state
+      // style and show the error exclusively
+      // create a custom success/error with a wreck sad train image for error and a smile driving train for success
     } finally {
       setSignUpLoading(false);
     }
@@ -198,6 +227,12 @@ const SignUp: React.FC = () => {
 
   return (
     <div className="w-full h-325 pt-10 bg-white">
+      <LoginModal
+        successRate={signUpSuccess}
+        errorMessage={signUpError}
+        successRate1={signUpFailed}
+      />
+
       <div className="w-[90%] h-300 flex m-auto overflow-hidden rounded-4xl relative bg-[url(testPhoto1.jpg)] bg-fixed bg-cover bg-no-repeat test-test">
         <svg
           className="absolute top-0 left-[30%] flex-initial h-[101%] z-5"
@@ -481,7 +516,7 @@ const SignUp: React.FC = () => {
             >
               <input
                 required
-                // name="username"
+                name="passwordConfirm"
                 type="password"
                 className="text-xs text-white font-Sekuya"
                 autoComplete="off"
