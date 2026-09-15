@@ -199,13 +199,16 @@ const SignUp: React.FC = () => {
       const data = await respond.json();
       if (!respond.ok) {
         console.log(data);
-        setSignUpFailed(true);
         throw new Error(data?.Message);
       }
       console.log(data);
 
       setSignUpSuccess(true); //being used for react framer animation
       e.target.reset();
+
+      setTimeout(() => {
+        setSignUpSuccess(false); // timeout for animation fading out
+      }, 3000);
       // clear all the input field
       // if(respond.ok) redirect to main page
       // throw error-->"respond.statusCode"
@@ -213,10 +216,15 @@ const SignUp: React.FC = () => {
       console.log(error);
       if (error instanceof Error) {
         setSignUpError(error);
+        setSignUpFailed(true);
       } else {
         setSignUpError(new Error("An unknown error occurs"));
+        setSignUpFailed(true);
       }
-      setSignUpFailed(true);
+
+      setTimeout(() => {
+        setSignUpFailed(false); // timeout for animation fading out
+      }, 3000);
       // catch the error and put it in a state
       // style and show the error exclusively
       // create a custom success/error with a wreck sad train image for error and a smile driving train for success
