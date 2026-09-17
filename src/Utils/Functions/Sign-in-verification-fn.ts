@@ -96,7 +96,16 @@ export function sign_in_verification_fn(e: React.FocusEvent<HTMLInputElement>, p
                 actionInputTypeErrorSwitch: true,
             },
           };
-        } else {
+        } else if(e.currentTarget.value.length <= 7) {
+          reducer = {
+                type: "PassWordType",
+                payload: {
+                actionErrorMessage: "Password length must be above eight Characters",
+                actionInputTypeErrorSwitch: true,
+            },
+          };
+        } 
+        else {
             reducer = {
                 type: "PassWordType",
                 payload: {
