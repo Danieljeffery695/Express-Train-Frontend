@@ -4,8 +4,31 @@ import { FaEyeSlash } from "react-icons/fa";
 import { renderToString } from "react-dom/server";
 import { sign_in_verification_fn } from "../Utils/Functions/Sign-in-verification-fn";
 import LoginModal from "../Components/LoginModal";
+import * as countryCodes from "country-codes-list";
 // import { motion, AnimatePresence, type Variants } from "framer-motion";
 import "./pages.css";
+
+const testArr: string[] = [];
+const myCountryCodesObject = countryCodes.customList(
+  //flag and countryCode for phone number. return object. for more information visit npm country-codes-list
+  "countryCode",
+  "+{countryCallingCode}",
+);
+
+// const seenCodes = new Set(); //this did'nt work because flag i want is'nt what i get go with my approach
+// const uniquePhoneCodes = countryCodes.all().filter((country) => {
+//   const dialCode = country.countryCallingCode;
+
+//   if (seenCodes.has(dialCode)) return false;
+
+//   seenCodes.add(dialCode);
+//   return true;
+// });
+
+for (const [key, value] of Object.entries(myCountryCodesObject)) {
+  if (!testArr.includes(value)) testArr.push(value);
+  console.log(`blah ${key} blah blah ${value}`);
+}
 
 interface ReducerState {
   inputType: string;
@@ -236,9 +259,9 @@ const SignUp: React.FC = () => {
   return (
     <div className="w-full h-325 pt-10 bg-white">
       <LoginModal
-        successRate={signUpSuccess}
+        successChecking={signUpSuccess}
         errorMessage={signUpError}
-        successRate1={signUpFailed}
+        successChecking1={signUpFailed}
       />
 
       <div className="w-[90%] h-300 flex m-auto overflow-hidden rounded-4xl relative bg-[url(testPhoto1.jpg)] bg-fixed bg-cover bg-no-repeat test-test">
@@ -381,15 +404,30 @@ const SignUp: React.FC = () => {
                   }}
                   ref={numberShowButton}
                 >
-                  e.g +1
+                  +1
                 </button>
                 {/*remember to remove scrollbar on small devices. i mean invisible scrollbar */}
                 <div
-                  className={`w-[130px] h-[200px] bg-gray-600 absolute mt-2.5 rounded-[8px] py-2.5 overflow-y-auto overflow-x-hidden 
+                  className={`w-[130px] h-[300px] bg-gray-600 absolute mt-2.5 rounded-[8px] py-2.5 overflow-y-auto overflow-x-hidden 
                 dropdown-scrollbar ${showNumberDiv ? "opacity-100 z-20 translate-y-1.5" : "opacity-0 translate-y-0"} [&>*:last-child]:border-b-0 transition-all transition-discrete duration-500 ease-in-out`}
                   ref={numberShowDiv}
                 >
-                  <div className="w-full h-[45px] cursor-pointer border-b-2 border-b-gray-400 pt-1">
+                  {testArr.sort().map((value) => (
+                    <div
+                      className="w-full h-[45px] cursor-pointer border-b-2 border-b-gray-400 pt-1"
+                      key={value}
+                    >
+                      <div
+                        className="w-[110px] h-[35px] hover:bg-gray-300 text-white hover:text-black rounded-[5px] m-auto pl-2.5"
+                        key={value}
+                      >
+                        <p className="font-Cafillen text-lg" key={value}>
+                          {value}
+                        </p>
+                      </div>
+                    </div>
+                  ))}
+                  {/* <div className="w-full h-[45px] cursor-pointer border-b-2 border-b-gray-400 pt-1">
                     <div className="w-[110px] h-[35px] hover:bg-gray-300 text-white hover:text-black rounded-[5px] m-auto pl-2.5">
                       <p className="font-Cafillen text-lg">+234</p>
                     </div>
@@ -435,7 +473,7 @@ const SignUp: React.FC = () => {
                     <div className="w-[120px] h-[35px] hover:bg-gray-600 rounded-[5px] m-auto pl-2.5">
                       <p className="font-Cafillen text-lg text-white">+37</p>
                     </div>
-                  </div>
+                  </div> */}
                 </div>
               </div>
 
