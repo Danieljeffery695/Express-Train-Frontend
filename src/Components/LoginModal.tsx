@@ -24,20 +24,18 @@ const loginVariant = {
 };
 
 const LoginModal = ({
-  successRate,
+  successChecking,
   errorMessage,
-  successRate1,
+  successChecking1,
 }: {
-  successRate: boolean;
+  successChecking: boolean;
   errorMessage: Error | null; //coming from signup form error
-  successRate1: boolean;
+  successChecking1: boolean;
 }) => {
-  console.log(successRate1);
-
   return (
     <div className="size-full absolute flex justify-center items-center">
       <AnimatePresence initial={false}>
-        {successRate && (
+        {successChecking && (
           <motion.div
             variants={loginVariant as Variants}
             initial="hidden"
@@ -56,8 +54,7 @@ const LoginModal = ({
             <div className="bg-white size-full rounded-2xl flex justify-center items-center">
               <div className="w-[250px] h-[150px] text-center bg-white">
                 <p className="text-xl font-Runtime text-black">
-                  {successRate ? "Sign up successfully" : errorMessage?.message}{" "}
-                  {/*errorMessage is literally not need here because this modal is used for successful message from backend server but uncertain things can happen */}
+                  Sign up successfully
                 </p>
               </div>
             </div>
@@ -68,7 +65,7 @@ const LoginModal = ({
       {/* Error message not coming from backend server */}
 
       <AnimatePresence initial={false}>
-        {successRate1 && (
+        {successChecking1 && (
           <motion.div
             variants={loginVariant as Variants}
             initial="hidden"
