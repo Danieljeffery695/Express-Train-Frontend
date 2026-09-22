@@ -49,10 +49,10 @@ const LoginModal = ({
                 stiffness: 20,
               },
             }}
-            className="w-[300px] h-[200px] fixed z-50"
+            className="w-75 h-50 fixed z-50"
           >
             <div className="bg-white size-full rounded-2xl flex justify-center items-center">
-              <div className="w-[250px] h-[150px] text-center bg-white">
+              <div className="w-62.5 h-37.5 text-center bg-white">
                 <p className="text-xl font-Runtime text-black">
                   Sign up successfully
                 </p>
@@ -79,10 +79,10 @@ const LoginModal = ({
                 stiffness: 20,
               },
             }}
-            className="w-[300px] h-[200px] fixed z-50"
+            className="w-75 h-50 fixed z-50"
           >
             <div className="bg-white size-full rounded-2xl flex justify-center items-center">
-              <div className="w-[250px] h-[150px] text-center bg-white">
+              <div className="w-62.5 h-37.5 text-center bg-white">
                 <p className="text-xl font-Runtime text-black">
                   {errorMessage?.message}
                 </p>

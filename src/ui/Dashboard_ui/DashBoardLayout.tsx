@@ -3,8 +3,8 @@ import { FaEye } from "react-icons/fa";
 
 const DashBoardLayout: React.FC = () => {
   return (
-    <div className="w-full h-screen flex">
-      <div className="w-[20%] h-screen fixed">
+    <div className="w-full h-full flex">
+      <div className="w-[20%] h-screen fixed bg-amber-500">
         <div className="w-full h-[70px] flex justify-around items-center px-1.5">
           <div className="w-[120px] h-[50px]">
             <img
@@ -141,64 +141,67 @@ const DashBoardLayout: React.FC = () => {
         </div>
       </div>
 
-      <div className="flex-2 grid grid-cols-4 ml-[20%]">
-        <div className="bg-white col-span-full h-[300px]">
+      <div className="flex-2 grid grid-cols-4 ml-[20%] gap-1.5 h-[1000px] pb-5 pl-0">
+        {/* //Once i insert all components and styling to each grids elements. i */}
+        {/* will remove the fixed background  */}
+        <div className="bg-white col-span-full">
           <div className="w-full h-[100px] bg-black"></div>
-          <div className="w-[400px] h-[80px] ml-2.5">
+          <div className="w-[400px] h-[80px] pl-2.5">
             <h1 className="text-2xl font-Playfair">Good morning, Daniel 👋 </h1>
             <p className="text-sm font-Runtime">
               Your next journey is just a few clicks away.
             </p>
           </div>
-          <div className="w-full h-[150px] flex">
-            <div className="w-[300px] h-[80px] bg-red-500 rounded-lg">
-              <FaEye />
-              <h2>Book a Train</h2>
-              <div className="float-left w-[70px] h-[40px] flex justify-center">
+          <div className="w-full h-[150px] flex pl-2.5">
+            <div className="w-[280px] h-[110px] relative overflow-hidden p-2.5 bg-red-500 rounded-lg mx-1.5">
+              <FaEye size={"2.4rem"} />
+              <h2 className="text-base font-Playfair">Book a Train</h2>
+              <div className="absolute left-[80%] top-[40%] bg-amber-400 w-[70px] h-[40px] flex justify-center items-center">
                 <FaEye />
               </div>
-              <span>Find and book your next trip</span>
+              <p className="text-sm font-Runtime">
+                Find and book your next trip
+              </p>
             </div>
-            <div className="w-[300px] h-[80px] bg-red-500 rounded-lg">
-              <FaEye />
-              <h2>Book a Train</h2>
-              <div className="float-left w-[70px] h-[40px] flex justify-center">
+            <div className="w-[280px] h-[110px] relative overflow-hidden p-2.5 bg-red-500 rounded-lg mx-1.5">
+              <FaEye size={"2.4rem"} />
+              <h2 className="text-base font-Playfair">Book a Train</h2>
+              <div className="absolute left-[80%] top-[40%] bg-amber-400 w-[70px] h-[40px] flex justify-center items-center">
                 <FaEye />
               </div>
-              <span>Find and book your next trip</span>
+              <p className="text-sm font-Runtime">
+                Find and book your next trip
+              </p>
             </div>
-            <div className="w-[300px] h-[80px] bg-red-500 rounded-lg">
-              <FaEye />
-              <h2>Book a Train</h2>
-              <div className="float-left w-[70px] h-[40px] flex justify-center">
+            <div className="w-[280px] h-[110px] relative overflow-hidden p-2.5 bg-red-500 rounded-lg mx-1.5">
+              <FaEye size={"2.4rem"} />
+              <h2 className="text-base font-Playfair">Book a Train</h2>
+              <div className="absolute left-[80%] top-[40%] bg-amber-400 w-[70px] h-[40px] flex justify-center items-center">
                 <FaEye />
               </div>
-              <span>Find and book your next trip</span>
+              <p className="text-sm font-Runtime">
+                Find and book your next trip
+              </p>
             </div>
-            <div className="w-[300px] h-[80px] bg-red-500 rounded-lg">
-              <FaEye />
-              <h2>Book a Train</h2>
-              <div className="float-left w-[70px] h-[40px] flex justify-center">
+            <div className="w-[280px] h-[110px] relative overflow-hidden p-2.5 bg-red-500 rounded-lg mx-1.5">
+              <FaEye size={"2.4rem"} />
+              <h2 className="text-base font-Playfair">Book a Train</h2>
+              <div className="absolute left-[80%] top-[40%] bg-amber-400 w-[70px] h-[40px] flex justify-center items-center">
                 <FaEye />
               </div>
-              <span>Find and book your next trip</span>
+              <p className="text-sm font-Runtime">
+                Find and book your next trip
+              </p>
             </div>
           </div>
         </div>
-
-        <div className="bg-red-400 col-span-2 h-[300px]"></div>
-
-        <div className="bg-blue-400 row-span-2"></div>
-
-        <div className="bg-white"></div>
-
-        <div className="bg-yellow-400 col-span-2 h-[140px]"></div>
-
-        <div className="bg-white"></div>
-
-        <div className="bg-green-400 col-span-3 h-[200px]"></div>
-
-        {/* <div className="bg-white"></div> */}
+        <div className="bg-red-400 col-span-2 ml-2.5 rounded-2xl"></div>
+        <div className="bg-blue-400 row-span-2 rounded-2xl"></div>
+        <div className="bg-gray-800 rounded-2xl mr-2.5"></div>
+        <div className="bg-yellow-400 col-span-2 rounded-2xl ml-2.5"></div>
+        <div className="bg-red-400 rounded-2xl mr-2.5"></div>
+        <div className="bg-green-400 col-span-3  rounded-2xl ml-2.5"></div>
+        <div className="bg-green-400 rounded-2xl mr-2.5 "></div>
       </div>
     </div>
 
