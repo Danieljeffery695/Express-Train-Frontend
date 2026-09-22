@@ -1,71 +1,71 @@
 @import "tailwindcss";
 
 * {
-    box-sizing: border-box;
+  box-sizing: border-box;
 }
 
 @font-face {
-    font-family: 'Bitcount_Grid';
-    src: url('./assets/fonts/BitcountGridDouble_Cursive-Black.ttf') format('opentype');
+  font-family: 'Bitcount_Grid';
+  src: url('./assets/fonts/BitcountGridDouble_Cursive-Black.ttf') format('opentype');
 }
 
 @font-face {
-    font-family: 'SairaStencil';
-    src: url('./assets/fonts/SairaStencil_Condensed-Black.ttf') format('opentype');
+  font-family: 'SairaStencil';
+  src: url('./assets/fonts/SairaStencil_Condensed-Black.ttf') format('opentype');
 }
 
 @font-face {
-    font-family: 'DancingScript';
-    src: url('./assets/fonts/DancingScript-Medium.ttf') format('opentype');
+  font-family: 'DancingScript';
+  src: url('./assets/fonts/DancingScript-Medium.ttf') format('opentype');
 }
 
 @font-face {
-    font-family: 'PlayfairDisplay';
-    src: url('./assets/fonts/PlayfairDisplay-Medium.ttf') format('opentype');
+  font-family: 'PlayfairDisplay';
+  src: url('./assets/fonts/PlayfairDisplay-Medium.ttf') format('opentype');
 }
 
 @font-face {
-    font-family: 'Roboto';
-    src: url('./assets/fonts/Roboto_Condensed-Black.ttf') format('opentype');
+  font-family: 'Roboto';
+  src: url('./assets/fonts/Roboto_Condensed-Black.ttf') format('opentype');
 }
 
 @font-face {
-    font-family: 'Sekuya';
-    src: url('./assets/fonts/Sekuya-Regular.ttf') format('opentype');
+  font-family: 'Sekuya';
+  src: url('./assets/fonts/Sekuya-Regular.ttf') format('opentype');
 }
 
 @font-face {
-    font-family: 'SuperSliced';
-    src: url('./assets/fonts/SuperSliced.ttf') format('opentype');
+  font-family: 'SuperSliced';
+  src: url('./assets/fonts/SuperSliced.ttf') format('opentype');
 }
 
 @font-face {
-    font-family: 'Cafillen';
-    src: url('./assets/fonts/CafillenRegular.otf') format('opentype');
+  font-family: 'Cafillen';
+  src: url('./assets/fonts/CafillenRegular.otf') format('opentype');
 }
 
 @font-face {
-    font-family: 'Runtime';
-    src: url('./assets/fonts/RuntimeRegular.otf') format('opentype');
+  font-family: 'Runtime';
+  src: url('./assets/fonts/RuntimeRegular.otf') format('opentype');
 }
 
 @theme {
-    --font-Bitcount: "Bitcount_Grid", sans-serif;
-    --font-DancingScript: "DancingScript", sans-serif;
-    --font-Playfair: "PlayfairDisplay", sans-serif;
-    --font-Roboto: "Roboto", sans-serif;
-    --font-SairaStencil: "SairaStencil", sans-serif;
-    --font-Sekuya: "Sekuya", sans-serif;
-    --font-SuperSlice: "SuperSliced", sans-serif;
-    --font-Cafillen: "Cafillen", sans-serif;
-    --font-Runtime: "Runtime", sans-serif;
-    --color-darkMode-primary: #0b0f1a;
-    --color-darkMode-secondary: #111827;
-    --color-darkMode-third: #e5e7eb;
-    --color-darkMode-border-color: #1a2d47;
-    --color-darkMode-border-color1: #2a4a70;
-    /* --shadow-t1: rgba(210, 46, 170, 0.4) 0px 5px, rgba(110, 46, 170, 0.3) 0px 10px, rgba(143, 46, 170, 0.2) 0px 15px, rgba(200, 46, 170, 0.1) 0px 20px, rgba(211, 46, 170, 0.05) 0px 25px; */
-    --shadow-t1: 15px 25px 2px black;
+  --font-Bitcount: "Bitcount_Grid", sans-serif;
+  --font-DancingScript: "DancingScript", sans-serif;
+  --font-Playfair: "PlayfairDisplay", sans-serif;
+  --font-Roboto: "Roboto", sans-serif;
+  --font-SairaStencil: "SairaStencil", sans-serif;
+  --font-Sekuya: "Sekuya", sans-serif;
+  --font-SuperSlice: "SuperSliced", sans-serif;
+  --font-Cafillen: "Cafillen", sans-serif;
+  --font-Runtime: "Runtime", sans-serif;
+  --color-darkMode-primary: #0b0f1a;
+  --color-darkMode-secondary: #111827;
+  --color-darkMode-third: #e5e7eb;
+  --color-darkMode-border-color: #1a2d47;
+  --color-darkMode-border-color1: #2a4a70;
+  /* --shadow-t1: rgba(210, 46, 170, 0.4) 0px 5px, rgba(110, 46, 170, 0.3) 0px 10px, rgba(143, 46, 170, 0.2) 0px 15px, rgba(200, 46, 170, 0.1) 0px 20px, rgba(211, 46, 170, 0.05) 0px 25px; */
+  --shadow-t1: 15px 25px 2px black;
 }
 
 @layer components {
@@ -83,12 +83,14 @@
   }
 
   .darkMode-form-btn-color {
-    background: linear-gradient(135deg, #111827 0%, #e5e7eb 100%); 
-  };
+    background: linear-gradient(135deg, #111827 0%, #e5e7eb 100%);
+  }
+
+  ;
 
   .darkMode-form-btn-color1 {
     color: white !important;
-    background: linear-gradient(135deg, #111827 100%, #e5e7eb 0%); 
+    background: linear-gradient(135deg, #111827 100%, #e5e7eb 0%);
     border: 2px solid #e5e7eb;
   }
 
@@ -175,14 +177,12 @@
   content: "";
   display: block;
   height: 3px;
-  background: linear-gradient(
-    90deg,
-    transparent 0%,
-    #111827 20%,
-    #111827 50%,
-    #e5e7eb 80%,
-    transparent 100%
-  );
+  background: linear-gradient(90deg,
+      transparent 0%,
+      #111827 20%,
+      #111827 50%,
+      #e5e7eb 80%,
+      transparent 100%);
 }
 
 .form-content {
@@ -226,11 +226,9 @@
 }
 
 .input-group {
-  background: linear-gradient(
-    135deg,
-    rgba(10, 22, 40, 0.8) 0%,
-    rgba(7, 18, 34, 0.9) 100%
-  );
+  background: linear-gradient(135deg,
+      rgba(10, 22, 40, 0.8) 0%,
+      rgba(7, 18, 34, 0.9) 100%);
   border: 1px solid #1a2d47;
   padding: 10px 12px;
   display: flex;
@@ -268,11 +266,9 @@
 .input-icon {
   width: 34px;
   height: 34px;
-  background: linear-gradient(
-    135deg,
-    rgba(30, 58, 95, 0.7) 0%,
-    rgba(20, 40, 70, 0.5) 100%
-  );
+  background: linear-gradient(135deg,
+      rgba(30, 58, 95, 0.7) 0%,
+      rgba(20, 40, 70, 0.5) 100%);
   border: 1px solid rgba(74, 158, 255, 0.2);
   display: flex;
   align-items: center;
@@ -376,12 +372,10 @@
 .line {
   height: 1px;
   flex: 1;
-  background: linear-gradient(
-    90deg,
-    transparent,
-    rgba(255, 255, 255, 0.1),
-    transparent
-  );
+  background: linear-gradient(90deg,
+      transparent,
+      rgba(255, 255, 255, 0.1),
+      transparent);
 }
 
 
@@ -390,174 +384,163 @@
 
 /* SectionOne Toggle Button stylings start here */
 
- .SectionOne__Toggle__Div {
-    margin: auto;
-    font-weight: 900;
-    font-size: 6rem;
-    display: flex;
-    justify-content: center;
-  }
+.SectionOne__Toggle__Div {
+  margin: auto;
+  font-weight: 900;
+  font-size: 6rem;
+  display: flex;
+  justify-content: center;
+}
 
-  .SectionOne__toggle__label {
-    margin-top: 10px;
-    transform: scale(0.85) translateX(0.5rem);
-    width: 60px;
-    height: 155px;
-    background: linear-gradient(744deg, #ea6f62 20%, #cccccc00 40%, #6bae67 80%);
-    background-color: #ea6f62;
-    border-radius: 1.8rem;
-    padding: 0.25rem 0;
-    cursor: pointer;
-    display: flex;
-    justify-content: center;
-    transition: background 0.3s 0.3s;
-    transition-delay: 0.35s;
-  }
+.SectionOne__toggle__label {
+  margin-top: 10px;
+  transform: scale(0.85) translateX(0.5rem);
+  width: 60px;
+  height: 155px;
+  background: linear-gradient(744deg, #ea6f62 20%, #cccccc00 40%, #6bae67 80%);
+  background-color: #ea6f62;
+  border-radius: 1.8rem;
+  padding: 0.25rem 0;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  transition: background 0.3s 0.3s;
+  transition-delay: 0.35s;
+}
 
-  .SectionOne__toggle__circle {
-    color: hsl(0, 0%, 30%);
-    width: 20px;
-    height: 20px;
-    background-color: hsla(0, 0%, 95%, 0);
-    outline-style: solid;
-    outline-width: 17.5px;
-    border-radius: 50%;
-    margin-top: calc(155px - 20px * 2.25);
-    transition: margin 0.4s ease-in;
-  }
+.SectionOne__toggle__circle {
+  color: hsl(0, 0%, 30%);
+  width: 20px;
+  height: 20px;
+  background-color: hsla(0, 0%, 95%, 0);
+  outline-style: solid;
+  outline-width: 17.5px;
+  border-radius: 50%;
+  margin-top: calc(155px - 20px * 2.25);
+  transition: margin 0.4s ease-in;
+}
 
-  .SectionOne__toggle__text {
-    background: linear-gradient(0deg, #4d4d4d 0%, #4d4d4d88 50%, #56704c2e 56.5%);
-    -webkit-background-clip: text;
-    background-clip: text;
-    color: transparent;
-    display: flex;
-    flex-direction: column;
-    line-height: 0.8;
-  }
+.SectionOne__toggle__text {
+  background: linear-gradient(0deg, #4d4d4d 0%, #4d4d4d88 50%, #56704c2e 56.5%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  display: flex;
+  flex-direction: column;
+  line-height: 0.8;
+}
 
-  #check:checked + .SectionOne__toggle__label > .SectionOne__toggle__circle {
-    margin-top: calc(20px / 1.25);
-  }
+#check:checked+.SectionOne__toggle__label>.SectionOne__toggle__circle {
+  margin-top: calc(20px / 1.25);
+}
 
-  #check:checked + .SectionOne__toggle__label ~ .SectionOne__toggle__text {
-    background: linear-gradient(
-      180deg,
+#check:checked+.SectionOne__toggle__label~.SectionOne__toggle__text {
+  background: linear-gradient(180deg,
       #4d4d4d 0%,
       #4d4d4d88 45%,
-      #56704c2e 47.5%
-    );
-    -webkit-background-clip: text;
-    background-clip: text;
-    color: transparent;
-  }
+      #56704c2e 47.5%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
 
-  @keyframes grad {
-    0% {
-      background: linear-gradient(
-        0deg,
+@keyframes grad {
+  0% {
+    background: linear-gradient(0deg,
         #4d4d4d 0%,
         #4d4d4d88 50%,
-        #56704c2e 56.5%
-      );
-      -webkit-background-clip: text;
-      background-clip: text;
-    }
-    10% {
-      background: linear-gradient(
-        2deg,
-        #4d4d4d 0%,
-        #4d4d4d88 47.5%,
-        #56704c2e 56.5%
-      );
-      -webkit-background-clip: text;
-      background-clip: text;
-    }
-    20% {
-      background: linear-gradient(
-        10deg,
-        #4d4d4d 0%,
-        #4d4d4d88 47.5%,
-        #56704c2e 56.5%
-      );
-      -webkit-background-clip: text;
-      background-clip: text;
-    }
-    40% {
-      background: linear-gradient(
-        45deg,
-        #4d4d4d 0%,
-        #4d4d4d88 47.5%,
-        #56704c2e 56.5%
-      );
-      -webkit-background-clip: text;
-      background-clip: text;
-    }
-    50% {
-      background: linear-gradient(
-        90deg,
-        #4d4d4d 0%,
-        #4d4d4d88 47.5%,
-        #56704c2e 56.5%
-      );
-      -webkit-background-clip: text;
-      background-clip: text;
-    }
-    60% {
-      background: linear-gradient(
-        135deg,
-        #4d4d4d 0%,
-        #4d4d4d88 47.5%,
-        #56704c2e 56.5%
-      );
-      -webkit-background-clip: text;
-      background-clip: text;
-    }
-    75% {
-      background: linear-gradient(
-        150deg,
-        #4d4d4d 0%,
-        #4d4d4d88 47.5%,
-        #56704c2e 56.5%
-      );
-      -webkit-background-clip: text;
-      background-clip: text;
-    }
-    90% {
-      background: linear-gradient(
-        170deg,
-        #4d4d4d 0%,
-        #4d4d4d88 47.5%,
-        #56704c2e 56.5%
-      );
-      -webkit-background-clip: text;
-      background-clip: text;
-    }
-    95% {
-      background: linear-gradient(
-        175deg,
-        #4d4d4d 0%,
-        #4d4d4d88 47.5%,
-        #56704c2e 56.5%
-      );
-      -webkit-background-clip: text;
-      background-clip: text;
-    }
-    100% {
-      background: linear-gradient(
-        180deg,
-        #4d4d4d 0%,
-        #4d4d4d88 45%,
-        #56704c2e 47.5%
-      );
-      -webkit-background-clip: text;
-      background-clip: text;
-    }
+        #56704c2e 56.5%);
+    -webkit-background-clip: text;
+    background-clip: text;
   }
 
-  #check:checked + .SectionOne__toggle__label {
-    background-color: #6bae67;
-  };
+  10% {
+    background: linear-gradient(2deg,
+        #4d4d4d 0%,
+        #4d4d4d88 47.5%,
+        #56704c2e 56.5%);
+    -webkit-background-clip: text;
+    background-clip: text;
+  }
+
+  20% {
+    background: linear-gradient(10deg,
+        #4d4d4d 0%,
+        #4d4d4d88 47.5%,
+        #56704c2e 56.5%);
+    -webkit-background-clip: text;
+    background-clip: text;
+  }
+
+  40% {
+    background: linear-gradient(45deg,
+        #4d4d4d 0%,
+        #4d4d4d88 47.5%,
+        #56704c2e 56.5%);
+    -webkit-background-clip: text;
+    background-clip: text;
+  }
+
+  50% {
+    background: linear-gradient(90deg,
+        #4d4d4d 0%,
+        #4d4d4d88 47.5%,
+        #56704c2e 56.5%);
+    -webkit-background-clip: text;
+    background-clip: text;
+  }
+
+  60% {
+    background: linear-gradient(135deg,
+        #4d4d4d 0%,
+        #4d4d4d88 47.5%,
+        #56704c2e 56.5%);
+    -webkit-background-clip: text;
+    background-clip: text;
+  }
+
+  75% {
+    background: linear-gradient(150deg,
+        #4d4d4d 0%,
+        #4d4d4d88 47.5%,
+        #56704c2e 56.5%);
+    -webkit-background-clip: text;
+    background-clip: text;
+  }
+
+  90% {
+    background: linear-gradient(170deg,
+        #4d4d4d 0%,
+        #4d4d4d88 47.5%,
+        #56704c2e 56.5%);
+    -webkit-background-clip: text;
+    background-clip: text;
+  }
+
+  95% {
+    background: linear-gradient(175deg,
+        #4d4d4d 0%,
+        #4d4d4d88 47.5%,
+        #56704c2e 56.5%);
+    -webkit-background-clip: text;
+    background-clip: text;
+  }
+
+  100% {
+    background: linear-gradient(180deg,
+        #4d4d4d 0%,
+        #4d4d4d88 45%,
+        #56704c2e 47.5%);
+    -webkit-background-clip: text;
+    background-clip: text;
+  }
+}
+
+#check:checked+.SectionOne__toggle__label {
+  background-color: #6bae67;
+}
+
+;
 
 
 /* SectionOne Toggle Button stylings ends here */

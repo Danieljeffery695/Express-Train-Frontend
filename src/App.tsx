@@ -20,7 +20,7 @@ const router = createBrowserRouter([
 
 const App: React.FC = () => {
   return (
-    <div className="w-full h-screen darkMode">
+    <div>
       {/* <NavBar/> */}
       <RouterProvider router={router} />
     </div>

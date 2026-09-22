@@ -15,22 +15,11 @@ const myCountryCodesObject = countryCodes.customList(
   "+{countryCallingCode}",
 );
 
-// const seenCodes = new Set(); //this did'nt work because flag i want is'nt what i get go with my approach
-// const uniquePhoneCodes = countryCodes.all().filter((country) => {
-//   const dialCode = country.countryCallingCode;
-
-//   if (seenCodes.has(dialCode)) return false;
-
-//   seenCodes.add(dialCode);
-//   return true;
-// });
-
 for (const [key, value] of Object.entries(myCountryCodesObject)) {
   if (!testArr.includes(value)) testArr.push(value);
-  console.log(`blah ${key} blah blah ${value}`);
 }
 
-interface ReducerState {
+export interface ReducerState {
   inputType: string;
   errorMessage: string;
   inputTypeErrorSwitch: boolean;
@@ -44,7 +33,7 @@ export interface ReducerAction {
   };
 }
 
-function reducer(state: Array<ReducerState>, action: ReducerAction) {
+export function reducer(state: Array<ReducerState>, action: ReducerAction) {
   switch (action.type) {
     case "TextType":
       console.log(state, action);
@@ -191,6 +180,7 @@ const SignUp: React.FC = () => {
   }, [showNumber_P_Element]);
 
   const inputChecks = (e: React.FocusEvent<HTMLInputElement>) => {
+    // function for onchange for input validation and for comparing confirm password and password
     dispatch(sign_in_verification_fn(e, inputShowPassword));
   };
 
@@ -323,7 +313,7 @@ const SignUp: React.FC = () => {
 
           <form
             onSubmit={handledSubmit}
-            className="w-full h-[600px] flex flex-col gap-9 items-center justify-center gap-3"
+            className="w-full h-150 flex flex-col gap-9 items-center justify-center "
           >
             <div
               className={`w-125 min-w-75 h-17.5 inputbox ${
@@ -354,7 +344,7 @@ const SignUp: React.FC = () => {
                   } as React.CSSProperties
                 }
                 className={`after:text-base after:text-red-600 after:font-Runtime after:absolute after:bottom-0 after:left-0 after:w-full
-               after:z-100 after:content-(--contents) after:pl-[10px] after:not-italic`}
+               after:z-100 after:content-(--contents) after:pl-2.5 after:not-italic`}
               ></i>
             </div>
 
@@ -387,17 +377,17 @@ const SignUp: React.FC = () => {
                   } as React.CSSProperties
                 }
                 className={`after:text-base after:text-red-600 after:font-Runtime after:absolute after:bottom-0 after:left-0 after:w-full
-               after:z-100 after:content-(--contents) after:pl-[10px] after:not-italic`}
+               after:z-100 after:content-(--contents) after:pl-2.5 after:not-italic`}
               ></i>
             </div>
 
             <div className="w-125 h-17.5 flex">
-              <div className="w-[150px] h-17.5 relative">
+              <div className="w-37.5 h-17.5 relative">
                 {/* <div className="w-[130px] h-full border-b-3 border-b-gray-500">
                   <h3 className="text-white text-2xl"> e.g +1</h3>
                 </div> */}
                 <button
-                  className=" w-[130px] h-full text-white border-b-2 border-transparent border-b-gray-500 outline-0 hover:border-2 hover:rounded-4xl 
+                  className=" w-32.5 h-full text-white border-b-2 border-transparent border-b-gray-500 outline-0 hover:border-2 hover:rounded-4xl 
                             hover:border-gray-500 text-lg font-Runtime transition-all transition-discrete delay-150 duration-200 ease-in-out cursor-pointer"
                   onClick={(e) => {
                     showNumber(numberShowDiv, e);
@@ -408,17 +398,17 @@ const SignUp: React.FC = () => {
                 </button>
                 {/*remember to remove scrollbar on small devices. i mean invisible scrollbar */}
                 <div
-                  className={`w-[130px] h-[300px] bg-gray-600 absolute mt-2.5 rounded-[8px] py-2.5 overflow-y-auto overflow-x-hidden 
+                  className={`w-32.5 h-75 bg-gray-600 absolute mt-2.5 rounded-lg py-2.5 overflow-y-auto overflow-x-hidden 
                 dropdown-scrollbar ${showNumberDiv ? "opacity-100 z-20 translate-y-1.5" : "opacity-0 translate-y-0"} [&>*:last-child]:border-b-0 transition-all transition-discrete duration-500 ease-in-out`}
                   ref={numberShowDiv}
                 >
                   {testArr.sort().map((value) => (
                     <div
-                      className="w-full h-[45px] cursor-pointer border-b-2 border-b-gray-400 pt-1"
+                      className="w-full h-11.25 cursor-pointer border-b-2 border-b-gray-400 pt-1"
                       key={value}
                     >
                       <div
-                        className="w-[110px] h-[35px] hover:bg-gray-300 text-white hover:text-black rounded-[5px] m-auto pl-2.5"
+                        className="w-27.5 h-8.75 hover:bg-gray-300 text-white hover:text-black rounded-[5px] m-auto pl-2.5"
                         key={value}
                       >
                         <p className="font-Cafillen text-lg" key={value}>
@@ -427,58 +417,11 @@ const SignUp: React.FC = () => {
                       </div>
                     </div>
                   ))}
-                  {/* <div className="w-full h-[45px] cursor-pointer border-b-2 border-b-gray-400 pt-1">
-                    <div className="w-[110px] h-[35px] hover:bg-gray-300 text-white hover:text-black rounded-[5px] m-auto pl-2.5">
-                      <p className="font-Cafillen text-lg">+234</p>
-                    </div>
-                  </div>
-
-                  <div className="h-[45px] cursor-pointer border-b-2 border-b-gray-400 pt-1">
-                    <div className="w-[120px] h-[35px] hover:bg-gray-600 rounded-[5px] m-auto pl-2.5">
-                      <p className="font-Cafillen text-lg text-white">+44</p>
-                    </div>
-                  </div>
-
-                  <div className="h-[45px] cursor-pointer border-b-2 border-b-gray-400 pt-1">
-                    <div className="w-[120px] h-[35px] hover:bg-gray-600 rounded-[5px] m-auto pl-2.5">
-                      <p className="font-Cafillen text-lg text-white">+71</p>
-                    </div>
-                  </div>
-
-                  <div className="h-[45px] cursor-pointer border-b-2 border-b-gray-400 pt-1">
-                    <div className="w-[120px] h-[35px] hover:bg-gray-600 rounded-[5px] m-auto pl-2.5">
-                      <p className="font-Cafillen text-lg text-white">+87</p>
-                    </div>
-                  </div>
-
-                  <div className="h-[45px] cursor-pointer border-b-2 border-b-gray-400 pt-1">
-                    <div className="w-[120px] h-[35px] hover:bg-gray-600 rounded-[5px] m-auto pl-2.5">
-                      <p className="font-Cafillen text-lg text-white">+664</p>
-                    </div>
-                  </div>
-
-                  <div className="h-[45px] cursor-pointer border-b-2 border-b-gray-400 pt-1">
-                    <div className="w-[120px] h-[35px] hover:bg-gray-600 rounded-[5px] m-auto pl-2.5">
-                      <p className="font-Cafillen text-lg text-white">+334</p>
-                    </div>
-                  </div>
-
-                  <div className="h-[45px] cursor-pointer border-b-2 border-b-gray-400 pt-1">
-                    <div className="w-[120px] h-[35px] hover:bg-gray-600 rounded-[5px] m-auto pl-2.5">
-                      <p className="font-Cafillen text-lg text-white">+96</p>
-                    </div>
-                  </div>
-
-                  <div className="h-[45px] cursor-pointer border-b-2 border-b-gray-400 pt-1">
-                    <div className="w-[120px] h-[35px] hover:bg-gray-600 rounded-[5px] m-auto pl-2.5">
-                      <p className="font-Cafillen text-lg text-white">+37</p>
-                    </div>
-                  </div> */}
                 </div>
               </div>
 
               <div
-                className={`w-[350px] min-w-75 h-17.5 inputbox ${
+                className={`w-87.5 min-w-75 h-17.5 inputbox ${
                   !numberInputFilter?.inputTypeErrorSwitch &&
                   "after:border-b-3 after:border-b-green-500 rounded-b-2xl"
                 }`}
@@ -506,7 +449,7 @@ const SignUp: React.FC = () => {
                     } as React.CSSProperties
                   }
                   className={`after:text-base after:text-red-600 after:font-Runtime after:absolute after:bottom-0 after:left-0 after:w-full
-               after:z-100 after:content-(--contents) after:pl-[10px] after:not-italic`}
+               after:z-100 after:content-(--contents) after:pl-2.5 after:not-italic`}
                 ></i>
               </div>
             </div>
@@ -544,10 +487,10 @@ const SignUp: React.FC = () => {
                   } as React.CSSProperties
                 }
                 className={`after:text-base after:text-red-600 after:font-Runtime after:absolute after:bottom-0 after:left-0 after:w-full
-               after:z-100 after:content-(--contents) after:pl-[10px] after:not-italic`}
+               after:z-100 after:content-(--contents) after:pl-2.5 after:not-italic`}
               ></i>
               <span
-                className="size-[50px] absolute z-30 top-4 left-[90%] text-center py-1.5 cursor-pointer"
+                className="size-12.5 absolute z-30 top-4 left-[90%] text-center py-1.5 cursor-pointer"
                 onClick={(e) => showPassword(inputShowPassword, e)}
               >
                 <FaEyeSlash size={"1.4rem"} color={"white"} />
@@ -587,10 +530,10 @@ const SignUp: React.FC = () => {
                   } as React.CSSProperties
                 }
                 className={`after:text-base after:text-red-600 after:font-Runtime after:absolute after:bottom-0 after:left-0 after:w-full
-               after:z-100 after:content-(--contents) after:pl-[10px] after:not-italic`}
+               after:z-100 after:content-(--contents) after:pl-2.5 after:not-italic`}
               ></i>
               <span
-                className="size-[50px] absolute z-30 top-4 left-[90%] text-center py-1.5 cursor-pointer"
+                className="size-12.5 absolute z-30 top-4 left-[90%] text-center py-1.5 cursor-pointer"
                 onClick={(e) => showPassword(inputShowConfirmPassword, e)}
               >
                 <FaEyeSlash size={"1.4rem"} color={"white"} />
@@ -658,21 +601,21 @@ const SignUp: React.FC = () => {
           </div>
 
           <div
-            className="w-[100px] h-[90px] bg-white ml-auto flex items-center justify-center relative rounded-bl-[55px]
-                    after:size-[40px] after:absolute after:top-0 after:right-full after:bg-red-400
+            className="w-25 h-22.5 bg-white ml-auto flex items-center justify-center relative rounded-bl-[55px]
+                    after:size-10 after:absolute after:top-0 after:right-full after:bg-red-400
                 after:content-[''] after:rounded-[50%] after:shadow-[20px_-15px_blue] 
-                    before:size-[40px] before:absolute before:top-[100%] before:right-0 before:-bg-red-400
+                    before:size-10 before:absolute before:top-full before:right-0 before:-bg-red-400
                 before:content-[''] before:rounded-[50%] before:shadow-[20px_-15px_blue]"
           >
-            <span className="size-[60px] rounded-[50%] flex items-center justify-center bg-red-600">
+            <span className="size-15 rounded-[50%] flex items-center justify-center bg-red-600">
               X
             </span>
             {/* the button will be styled as a blobs wavy */}
           </div>
 
-          <div className="w-[300px] h-full ml-auto relative">
+          <div className="w-75 h-full ml-auto relative">
             {/* <a href="">TERMS & CONDITIONS</a> */}
-            <div className=" w-[400px] h-[100px] -rotate-90 absolute top-[50%] translate-x-[50px]">
+            <div className=" w-100 h-25 -rotate-90 absolute top-[50%] translate-x-12.5">
               <img
                 src="train-header-right.png"
                 alt="train-photo"

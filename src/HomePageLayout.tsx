@@ -9,7 +9,7 @@ import Footer from "./ui/Footer";
 
 const AppLayout: React.FC = () => {
   return (
-    <div className="size-full overflow-x-hidden overflow-y-scroll">
+    <div className="size-full darkMode">
       {/* <Header/> */}
       {/* <SectionOne/> */}
       {/* <SectionTwo/> */}
