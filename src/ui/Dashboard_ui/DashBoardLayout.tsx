@@ -1,4 +1,5 @@
 import React from "react";
+import DashboardSearch from "./Dashboard_Search";
 import { FaEye } from "react-icons/fa";
 
 const DashBoardLayout: React.FC = () => {
@@ -145,7 +146,9 @@ const DashBoardLayout: React.FC = () => {
         {/* //Once i insert all components and styling to each grids elements. i */}
         {/* will remove the fixed background  */}
         <div className="bg-white col-span-full">
-          <div className="w-full h-[100px] bg-black"></div>
+          <div className="w-full h-[100px]">
+            <DashboardSearch />
+          </div>
           <div className="w-[400px] h-[80px] pl-2.5">
             <h1 className="text-2xl font-Playfair">Good morning, Daniel 👋 </h1>
             <p className="text-sm font-Runtime">
