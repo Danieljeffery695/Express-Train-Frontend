@@ -1,5 +1,6 @@
 import React from "react";
-import DashboardSearch from "./Dashboard_Search";
+import DashBoardSearch from "./Dashboard_Search";
+import DashBoardCMP from "./Dashboard_CMP";
 import { FaEye } from "react-icons/fa";
 
 const DashBoardLayout: React.FC = () => {
@@ -147,7 +148,7 @@ const DashBoardLayout: React.FC = () => {
         {/* will remove the fixed background  */}
         <div className="bg-white col-span-full">
           <div className="w-full h-[100px]">
-            <DashboardSearch />
+            <DashBoardSearch />
           </div>
           <div className="w-[400px] h-[80px] pl-2.5">
             <h1 className="text-2xl font-Playfair">Good morning, Daniel 👋 </h1>
@@ -198,7 +199,9 @@ const DashBoardLayout: React.FC = () => {
             </div>
           </div>
         </div>
-        <div className="bg-red-400 col-span-2 ml-2.5 rounded-2xl"></div>
+        <div className="bg-red-400 col-span-2 ml-2.5 rounded-2xl">
+          <DashBoardCMP />
+        </div>
         <div className="bg-blue-400 row-span-2 rounded-2xl"></div>
         <div className="bg-gray-800 rounded-2xl mr-2.5"></div>
         <div className="bg-yellow-400 col-span-2 rounded-2xl ml-2.5"></div>
