@@ -1,6 +1,7 @@
 import React from "react";
 import DashBoardSearch from "./Dashboard_Search";
 import DashBoardCMP from "./Dashboard_CMP";
+import DashBoard_CMP1 from "./Dashboard_CMP1";
 import { FaEye } from "react-icons/fa";
 
 const DashBoardLayout: React.FC = () => {
@@ -156,7 +157,7 @@ const DashBoardLayout: React.FC = () => {
               Your next journey is just a few clicks away.
             </p>
           </div>
-          <div className="w-full h-[150px] flex pl-2.5">
+          <div className="w-full h-[125px] flex pl-2.5">
             <div className="w-[280px] h-[110px] relative overflow-hidden p-2.5 bg-red-500 rounded-lg mx-1.5">
               <FaEye size={"2.4rem"} />
               <h2 className="text-base font-Playfair">Book a Train</h2>
@@ -204,7 +205,9 @@ const DashBoardLayout: React.FC = () => {
         </div>
         <div className="bg-blue-400 row-span-2 rounded-2xl"></div>
         <div className="bg-gray-800 rounded-2xl mr-2.5"></div>
-        <div className="bg-yellow-400 col-span-2 rounded-2xl ml-2.5"></div>
+        <div className="bg-yellow-400 col-span-2 rounded-2xl ml-2.5">
+          <DashBoard_CMP1 />
+        </div>
         <div className="bg-red-400 rounded-2xl mr-2.5"></div>
         <div className="bg-green-400 col-span-3  rounded-2xl ml-2.5"></div>
         <div className="bg-green-400 rounded-2xl mr-2.5 "></div>
