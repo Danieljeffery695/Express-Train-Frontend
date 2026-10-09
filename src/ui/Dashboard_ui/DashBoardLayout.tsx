@@ -5,6 +5,7 @@ import DashBoard_CMP1 from "./Dashboard_CMP1";
 import { FaEye } from "react-icons/fa";
 import DashBoard_Map from "./Dashboard_Map";
 import DashBoard_NearbyTrain from "./Dashboard_NearbyTrain";
+import DashBoard_Updates from "./Dashboard_Updates";
 
 const DashBoardLayout: React.FC = () => {
   return (
@@ -208,13 +209,15 @@ const DashBoardLayout: React.FC = () => {
         <div className="bg-blue-400 row-span-2 rounded-2xl p-1">
           <DashBoard_Map />
         </div>
-        <div className="bg-gray-800 rounded-2xl mr-2.5">
+        <div className="bg-gray-800 rounded-2xl mr-2.5 px-1.5 py-2.5">
           <DashBoard_NearbyTrain />
         </div>
         <div className="bg-yellow-400 col-span-2 rounded-2xl ml-2.5">
           <DashBoard_CMP1 />
         </div>
-        <div className="bg-red-400 rounded-2xl mr-2.5 row-span-2"></div>
+        <div className="bg-red-400 rounded-2xl mr-2.5 row-span-2 px-1.5 overflow-hidden">
+          <DashBoard_Updates />
+        </div>
         <div className="bg-green-400 col-span-3  rounded-2xl ml-2.5 row-span-2"></div>
         <div className="bg-green-400 rounded-2xl mr-2.5 "></div>
       </div>
